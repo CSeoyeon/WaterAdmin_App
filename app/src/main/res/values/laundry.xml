@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="laundry">
+        <item>표준 코스(40도 이상)</item>
+        <item>표준 코스(냉수)</item>
+        <item>이불 세탁</item>
+    </string-array>
+
+</resources>
