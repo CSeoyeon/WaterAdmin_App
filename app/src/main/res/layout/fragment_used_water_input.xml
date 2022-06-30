@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.inputPage.WaterUseFragment">
+    tools:context=".ui.inputPage.WaterUseFragment"
+    android:id= "@+id/usedWaterInput">
 
     <LinearLayout
         android:layout_width="371dp"
@@ -129,7 +130,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/shower"
                         android:layout_width="126dp"
                         android:layout_height="wrap_content"
                         android:text="목욕(분)"
@@ -137,7 +138,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName7"
+                        android:id="@+id/showerInput"
                         android:layout_width="122dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -161,7 +162,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName7"
+                        android:id="@+id/userInput"
                         android:layout_width="122dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

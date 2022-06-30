@@ -9,10 +9,11 @@
     <LinearLayout
         android:layout_width="359dp"
         android:layout_height="675dp"
-        android:layout_marginTop="28dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="26dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_dashboard"
@@ -29,7 +30,7 @@
             android:layout_height="358dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/listAddBtn"
             android:layout_width="match_parent"
             android:layout_height="71dp"
             android:text="add" />
