@@ -29,7 +29,8 @@ public class DashboardFragment extends Fragment {
 
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
-
+        
+        //튕김
         Button inputAdd = (Button)getView().findViewById(R.id.listAddBtn);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
