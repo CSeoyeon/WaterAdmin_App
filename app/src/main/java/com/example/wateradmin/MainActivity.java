@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.example.wateradmin.databinding.FragmentDashboardBinding;
 import com.example.wateradmin.ui.dashboard.DashboardFragment;
+import com.example.wateradmin.ui.inputPage.WaterUseFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,16 +42,19 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        Button addInputBtn = binding.listAddBtn;
+        addInputBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
 
-        //Button inputAdd = findViewById(R.id.listAddBtn);
-
+                WaterUseFragment wateruserfragment = new WaterUseFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.usedWaterInput, wateruserfragment);
+                transaction.commit();
+            }
+        });
 
     }
 
-    public void UsedWaterAddFragement(Fragment fragement){
-        FragmentManager fragmentManager= getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.usedWaterInput, fragement).commit();
-    }
 
 }
