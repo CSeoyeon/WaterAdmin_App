@@ -40,10 +40,7 @@ public class WaterUseFragment extends Fragment {
         WaterViewModel waterViewModel =
                 new ViewModelProvider(this).get(WaterViewModel.class);
 
-        
         binding = FragmentUsedWaterInputBinding.inflate(inflater, container, false);
-
-
         View root = binding.getRoot();
         return root;
     }
