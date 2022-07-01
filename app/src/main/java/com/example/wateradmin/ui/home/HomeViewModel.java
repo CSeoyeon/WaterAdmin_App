@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel;
 public class HomeViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
+    private String usedWater, waterTax;
+
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();
@@ -15,5 +17,21 @@ public class HomeViewModel extends ViewModel {
 
     public LiveData<String> getText() {
         return mText;
+    }
+
+    public String getUsedWater() {
+        return usedWater;
+    }
+
+    public void setUsedWater(String usedWater) {
+        this.usedWater = usedWater;
+    }
+
+    public String getWaterTax() {
+        return waterTax;
+    }
+
+    public void setWaterTax(String waterTax) {
+        this.waterTax = waterTax;
     }
 }

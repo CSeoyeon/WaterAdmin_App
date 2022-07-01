@@ -20,23 +20,11 @@
         app:menu="@menu/bottom_nav_menu" />
 
 
-    <Button
-        android:id="@+id/listAddBtn"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:text="추가"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment_activity_main"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_activity_main"
-        app:layout_constraintVertical_bias="0.903" />
-
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="412dp"
+        android:layout_height="640dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintHorizontal_bias="0.0"

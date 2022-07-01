@@ -42,18 +42,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        Button addInputBtn = binding.listAddBtn;
-        addInputBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-
-                WaterUseFragment wateruserfragment = new WaterUseFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.usedWaterInput, wateruserfragment);
-                transaction.commit();
-            }
-        });
-
     }
 
 
