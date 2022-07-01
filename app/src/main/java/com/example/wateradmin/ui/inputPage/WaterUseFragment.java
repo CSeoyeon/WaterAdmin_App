@@ -28,7 +28,7 @@ public class WaterUseFragment extends Fragment {
 
     private FragmentUsedWaterInputBinding binding;
     private WaterViewModel waterViewModel;
-
+    Button e;
     public static WaterUseFragment newInstance(){return new WaterUseFragment();}
 
     static final String[] laundry =new String[]{"표준코스(40도 이상)", "표준 코드(냉수)", "이불 세탁", "없음"};
