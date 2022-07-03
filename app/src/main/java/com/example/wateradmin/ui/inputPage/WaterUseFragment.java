@@ -2,6 +2,7 @@ package com.example.wateradmin.ui.inputPage;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -192,6 +193,14 @@ public class WaterUseFragment extends Fragment {
                 waterViewModel.setUserInputtedTime(ETUserInput.getText().toString());
                 waterViewModel.setshowerTime(ETshower.getText().toString());
                 waterViewModel.setIngestionPerson(ETIngestionInput.getText().toString());
+
+                /*
+                Log.v("car","time: " + carWashUsed);
+                Log.v("shower","time: " + showerUsed);
+                Log.v("user","time: " + UserInputUsed);
+                Log.v("laundry","time: " + laundryUsed);
+                Log.v("dish","time: " + washDishMinute);
+                */
 
             }
         });
