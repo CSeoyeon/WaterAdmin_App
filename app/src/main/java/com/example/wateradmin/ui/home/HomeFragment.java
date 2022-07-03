@@ -1,6 +1,7 @@
 package com.example.wateradmin.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +28,19 @@ public class HomeFragment extends Fragment {
     private Button AddBtn;
     private TextView todayUsedWater, todayWaterTax;
     Double getTodayUsedWater, getTodayWaterTax;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+
+        //매핑
+        todayUsedWater = binding.waterUseTX;
+        todayWaterTax = binding.waterTaxTX;
         AddBtn = binding.homeAddBtn;
+
         NavController homeNavController = NavHostFragment.findNavController(HomeFragment.this);
         AddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +62,8 @@ public class HomeFragment extends Fragment {
                 getTodayUsedWater = bundle.getDouble(("일_사용량"));
                 getTodayWaterTax = bundle.getDouble(("일_수도세"));
 
+                //데이터 전달된 거 확인
+                Log.v("tag","e"+getTodayUsedWater+getTodayWaterTax);
                 todayUsedWater.setText(getTodayUsedWater.toString());
                 todayWaterTax.setText(getTodayWaterTax.toString());
             }
