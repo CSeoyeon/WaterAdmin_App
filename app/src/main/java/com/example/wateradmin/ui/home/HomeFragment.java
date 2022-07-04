@@ -20,20 +20,25 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.wateradmin.MainActivity;
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentHomeBinding;
+import com.example.wateradmin.ui.inputPage.UsageRecordDate;
+import com.example.wateradmin.ui.inputPage.WaterUsageRecord;
 import com.example.wateradmin.ui.inputPage.WaterUseFragment;
+import com.example.wateradmin.ui.inputPage.WaterViewModel;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private Button AddBtn;
     private TextView todayUsedWater, todayWaterTax;
+    private HomeViewModel homeViewModel;
     Double getTodayUsedWater, getTodayWaterTax;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
+        homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         //매핑
@@ -56,19 +61,34 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                getTodayUsedWater = bundle.getDouble(("일_사용량"));
-                getTodayWaterTax = bundle.getDouble(("일_수도세"));
+        List<WaterUsageRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
 
-                //데이터 전달된 거 확인
-                Log.v("tag","e"+getTodayUsedWater+getTodayWaterTax);
-                todayUsedWater.setText(getTodayUsedWater.toString());
-                todayWaterTax.setText(getTodayWaterTax.toString());
-            }
-        });
+        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
+            todayUsedWater.setText("" + (todayUsageRecords.size()));
+            todayWaterTax.setText("" + getTotalUsageAmount(todayUsageRecords));
+        }
 
+//        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+//            @Override
+//            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+//                getTodayUsedWater = bundle.getDouble(("일_사용량"));
+//                getTodayWaterTax = bundle.getDouble(("일_수도세"));
+//
+//                //데이터 전달된 거 확인
+//                Log.v("tag","e"+getTodayUsedWater+getTodayWaterTax);
+//                todayUsedWater.setText(getTodayUsedWater.toString());
+//                todayWaterTax.setText(getTodayWaterTax.toString());
+//            }
+//        });
+
+    }
+
+    private double getTotalUsageAmount(List<WaterUsageRecord> recordList) {
+        double toReturn = 0.0;
+        for (WaterUsageRecord record : recordList) {
+            toReturn += record.getUsedAmountInLiters();
+        }
+        return toReturn;
     }
 
     @Override

@@ -4,8 +4,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.wateradmin.ui.inputPage.UsageRecordDate;
+import com.example.wateradmin.ui.inputPage.WaterUsageRecord;
+import com.example.wateradmin.ui.inputPage.WaterUsageRecordRepository;
+
+import java.util.List;
+
 public class HomeViewModel extends ViewModel {
 
+    private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private final MutableLiveData<String> mText;
     private String usedWater, waterTax;
 
@@ -13,6 +20,16 @@ public class HomeViewModel extends ViewModel {
     public HomeViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
+    }
+
+    public List<WaterUsageRecord> getAllUsageRecords()
+    {
+        return waterUsageRecordRepository.getAllUsageRecords();
+    }
+
+    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date)
+    {
+        return waterUsageRecordRepository.getUsageRecordsForDate(date);
     }
 
     public LiveData<String> getText() {

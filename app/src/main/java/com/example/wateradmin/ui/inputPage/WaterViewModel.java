@@ -6,49 +6,39 @@ import androidx.lifecycle.ViewModel;
 
 public class WaterViewModel extends ViewModel {
 
-    private final MutableLiveData<Integer> laundry, washCar, shower, userInput, washDish;
+    private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
+    private String selectedSpinnnerValue;
 
-    private String IngestionPerson, carWashTime, showerTime, userInputTime;
+    public void addNewUsageRecord(double amountInLiters) {
+        UsageType usageType = UsageType.SHOWER;
+        switch (selectedSpinnnerValue) {
+            case "세탁":
+                usageType = UsageType.LAUNDRY;
+                break;
+            case "세차":
+                usageType = UsageType.CAR_WASH;
+                break;
+            case "설거지":
+                usageType = UsageType.DISH_WASH;
+                break;
+            case "샤워":
+                usageType = UsageType.SHOWER;
+                break;
+            case "사용자 입력":
+                usageType = UsageType.USER_INPUT;
+                break;
+        }
 
-    public WaterViewModel(){
-        laundry = new MutableLiveData<>();
-        washCar = new MutableLiveData<>();
-        shower = new MutableLiveData<>();
-        userInput = new MutableLiveData<>();
-        washDish = new MutableLiveData<>();
-
+        WaterUsageRecord toAdd = new WaterUsageRecord(usageType, amountInLiters, System.currentTimeMillis());
+        waterUsageRecordRepository.addUsageRecord(toAdd);
     }
 
-    public LiveData<Integer> getLaundry(){return laundry;}
-    public LiveData<Integer> getWashCar(){ return washCar;}
-    public LiveData<Integer> getWashDish(){return washDish;}
-    public LiveData<Integer> getUserInput(){ return userInput;}
-    public LiveData<Integer> getShower(){ return shower;}
-
-    public String getIngenstionPerson() {return IngestionPerson;}
-
-    public void setIngestionPerson(String IngestionPerson){this.IngestionPerson = IngestionPerson; }
-
-    public String getCarWash() {return carWashTime;}
-
-    public void setCarWash(String carWashTime) {
-        this.carWashTime = carWashTime;
+    public String getSelectedSpinnnerValue() {
+        return selectedSpinnnerValue;
     }
 
-    public String getshowerTime() {
-        return showerTime;
-    }
-
-    public void setshowerTime(String showerTime) {
-        this.showerTime = showerTime;
-    }
-
-    public String getUserInputtedTime() {
-        return userInputTime;
-    }
-
-    public void setUserInputtedTime(String userInputTime) {
-        this.userInputTime = userInputTime;
+    public void setSelectedSpinnnerValue(String laundrySpinnerValue) {
+        this.selectedSpinnnerValue = selectedSpinnnerValue;
     }
 
 

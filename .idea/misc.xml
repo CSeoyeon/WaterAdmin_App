@@ -3,18 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/csy/Desktop/WaterAdmin_App/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/csy/Desktop/WaterAdmin_App/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Users/csy/Desktop/WaterAdmin_App/app/src/main/res/layout/fragment_used_water_input.xml" value="0.1" />
-        <entry key="..\:/Users/csy/Desktop/WaterAdmin_App/app/src/main/res/layout/toolbar.xml" value="0.11481481481481481" />
-        <entry key="..\:/Users/csy/Desktop/WaterAdmin_App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2935" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/fragment_dashboard.xml" value="0.2947916666666667" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/fragment_home.xml" value="0.2947916666666667" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/fragment_notifications.xml" value="0.2947916666666667" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/fragment_used_water_input.xml" value="0.2825994014536127" />
-        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/used_water_input.xml" value="0.3500905797101449" />
+        <entry key="..\:/Users/lim12/AndroidStudioProjects/WaterAdmin/app/src/main/res/layout/activity_main.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/lim12/WaterAdmin_App/app/src/main/res/layout/fragment_home.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/lim12/WaterAdmin_App/app/src/main/res/layout/fragment_used_water_input.xml" value="0.25815217391304346" />
+        <entry key="..\:/Users/lim12/WaterAdmin_App/app/src/main/res/layout/fragment_usedwaterlaundry.xml" value="0.33" />
+        <entry key="..\:/Users/lim12/WaterAdmin_App/app/src/main/res/layout/fragment_usedwatershower.xml" value="0.32135416666666666" />
+        <entry key="..\:/Users/lim12/WaterAdmin_App/app/src/main/res/layout/fragment_usedwaterwashcar.xml" value="0.32135416666666666" />
+        <entry key="..\:/Users/lim12/WaterAdmin_App/app/src/main/res/layout/fragment_usedwaterwashdish.xml" value="0.32135416666666666" />
       </map>
     </option>
   </component>
