@@ -23,14 +23,13 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedWaterInputBinding;
+import com.example.wateradmin.databinding.FragmentUsedwaterinputBinding;
 import com.example.wateradmin.ui.home.HomeFragment;
 
 public class WaterUseFragment extends Fragment {
 
     private FragmentUsedWaterInputBinding binding;
     private WaterViewModel waterViewModel;
-
-    public static WaterUseFragment newInstance(){return new WaterUseFragment();}
 
     static final String[] useWaterInputSpUseType =new String[]{
             "세탁",
@@ -40,34 +39,21 @@ public class WaterUseFragment extends Fragment {
             "사용자 입력"
     };
 
-    static final String[] useWaterInputSpLaundryType =new String[]{
-            "표준코스(40도 이상)",
-            "표준 코드(냉수)",
-            "이불 세탁"
-    };
-
-    static final String[] useWaterInputSpWashDishType =new String[]{
-            "식기세척기(5~12인용)",
-            "손 설거지"
-    };
-
     private NavController navController;
     private Button bt_save;
     private Spinner sp_useType;
-    private EditText et_testInput;
+   // private EditText et_testInput;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(WaterUseFragment.this);
-        waterViewModel =
-                new ViewModelProvider(requireActivity()).get(WaterViewModel.class);
-
-        binding = FragmentUsedWaterInputBinding.inflate(inflater, container, false);
+        waterViewModel = new ViewModelProvider(requireActivity()).get(WaterViewModel.class);
+        binding = FragmentUsedwaterBinding.inflate(inflater, container, false);
 
         //매핑
         bt_save = binding.useWaterInputBtSave;
         sp_useType = binding.useWaterInputSpUseType;
-        et_testInput = binding.useWaterInputEtAmount;
+        //et_testInput = binding.useWaterInputEtAmount;
 
         //사용 용도 종류
         ArrayAdapter<String> useTypeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, useWaterInputSpUseType);
@@ -78,6 +64,29 @@ public class WaterUseFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long ld) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
                 waterViewModel.setSelectedSpinnnerValue(selectedItem);
+
+                if(sp_useType.getSelectedItem().toString() == "세탁"){
+                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                }
+                else if(sp_useType.getSelectedItem().toString() == "세차"){
+                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                }
+
+                else if(sp_useType.getSelectedItem().toString() == "설거지"){
+                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                }
+
+                else if(sp_useType.getSelectedItem().toString() == "목욕"){
+                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                }
+
+                else if(sp_useType.getSelectedItem().toString() == "사용자 입력"){
+                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                }
+
+
+                //세탁 선택시
+                // navController = NavHostFragment.findNavController(WaterUseFragment.this);
             }
 
             @Override
@@ -91,16 +100,18 @@ public class WaterUseFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         bt_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                waterViewModel.addNewUsageRecord(Double.parseDouble(et_testInput.getText().toString()));
-                navController.navigate(R.id.action_navigation_waterUserFragment_to_navigation_home);
+                //waterViewModel.addNewUsageRecord(Double.parseDouble(et_testInput.getText().toString()));
+                navController.navigate(R.id.action_navigation_usedWaterInputFragment_to_navigation_waterUserFragment);
             }
         });
     }
 }
+
+
+
         //매핑
         //입력
 //        EditText ETshower = binding.showerInput;

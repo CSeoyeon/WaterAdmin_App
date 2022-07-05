@@ -33,12 +33,14 @@ public class HomeFragment extends Fragment {
     private Button AddBtn;
     private TextView todayUsedWater, todayWaterTax;
     private HomeViewModel homeViewModel;
+    private WaterViewModel waterViewModel;
+
     Double getTodayUsedWater, getTodayWaterTax;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        waterViewModel = new ViewModelProvider(requireActivity()).get(WaterViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         //매핑

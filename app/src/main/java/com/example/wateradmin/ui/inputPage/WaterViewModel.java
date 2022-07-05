@@ -3,12 +3,14 @@ package com.example.wateradmin.ui.inputPage;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.wateradmin.R;
 
 public class WaterViewModel extends ViewModel {
 
     private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private String selectedSpinnnerValue;
-
     public void addNewUsageRecord(double amountInLiters) {
         UsageType usageType = UsageType.SHOWER;
         switch (selectedSpinnnerValue) {
@@ -37,8 +39,8 @@ public class WaterViewModel extends ViewModel {
         return selectedSpinnnerValue;
     }
 
-    public void setSelectedSpinnnerValue(String laundrySpinnerValue) {
-        this.selectedSpinnnerValue = selectedSpinnnerValue;
+    public void setSelectedSpinnnerValue(String selectedSpinnnerValue) {
+        this.selectedSpinnnerValue =selectedSpinnnerValue;
     }
 
 

@@ -31,10 +31,22 @@
         android:id="@+id/navigation_waterUserFragment"
         android:name="com.example.wateradmin.ui.inputPage.WaterUseFragment"
         android:label="WaterUsedInput"
-        tools:layout="@layout/fragment_used_water_input" >
+        tools:layout="@layout/fragment_usedwaterinput" >
         <action
             android:id="@+id/action_navigation_waterUserFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_usedWaterInputFragment"
+        android:name="com.example.wateradmin.ui.inputPage.UsedWaterInputLaundryFragment"
+        android:label="laundryInput"
+        tools:layout="@layout/fragment_usedwaterinputlaundry" >
+        <action
+            android:id="@+id/action_navigation_usedWaterInputFragment_to_navigation_waterUserFragment"
+            app:destination="@id/navigation_waterUserFragment" />
+    </fragment>
+
+
 
 </navigation>

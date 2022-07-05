@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id ="@+id/fragment_usedWaterLaundry"
+    tools:context="ui.inputPage.UsedWaterInputLaundryFragment">
+
+    <TextView
+        android:id="@+id/usedWaterLaundry_tv_title"
+        android:layout_width="117dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:text="세탁 방법"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/usedWaterLaundry_radigG_modeChoice"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/usedWaterLaundry_radigG_modeChoice"
+        android:layout_width="206dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usedWaterLaundry_tv_title">
+
+        <TextView
+            android:id="@+id/usedWaterLaundry_tv_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="세탁 모드 "
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/usedWaterLaundry_radioBt_basicModeCold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="표준 모드(냉수)" />
+
+        <RadioButton
+            android:id="@+id/usedWaterLaundry_radioBt_basicModeHot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="표준 모드(40도 이상)" />
+
+        <RadioButton
+            android:id="@+id/usedWaterLaundry_radioBt_bedding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이불 세탁" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/usedWaterLaundry_tv_usedCount"
+        android:layout_width="87dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="사용 횟수 "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/usedWaterLaundry_radigG_modeChoice"
+        app:layout_constraintTop_toBottomOf="@+id/usedWaterLaundry_radigG_modeChoice" />
+
+    <TextView
+        android:id="@+id/usedWaterLaundry_tv_Count"
+        android:layout_width="35dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="4dp"
+        android:text="회"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/usedWaterLaundry_et_usedCount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/usedWaterLaundry_et_usedCount"
+        app:layout_constraintTop_toTopOf="@+id/usedWaterLaundry_et_usedCount" />
+
+    <EditText
+        android:id="@+id/usedWaterLaundry_et_usedCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:inputType="number"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="@+id/usedWaterLaundry_tv_usedCount"
+        app:layout_constraintTop_toBottomOf="@+id/usedWaterLaundry_tv_usedCount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
