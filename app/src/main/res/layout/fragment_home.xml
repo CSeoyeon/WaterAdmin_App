@@ -12,11 +12,10 @@
         android:id="@+id/waterUseTX"
         android:layout_width="199dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="40dp"
         android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/waterTaxTX"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
     <TextView
@@ -34,7 +33,7 @@
         android:layout_width="86dp"
         android:layout_height="43dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="64dp"
         android:text="당일 수도세:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +43,12 @@
         android:id="@+id/waterTaxTX"
         android:layout_width="164dp"
         android:layout_height="46dp"
+        android:layout_marginBottom="324dp"
         android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/homeAddBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        tools:layout_editor_absoluteY="255dp" />
+        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <Button
         android:id="@+id/homeAddBtn"

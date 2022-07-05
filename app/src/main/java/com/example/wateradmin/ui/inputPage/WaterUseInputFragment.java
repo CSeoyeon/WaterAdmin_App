@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -19,6 +20,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputBinding;
+import com.example.wateradmin.databinding.FragmentUsedwaterinputuserinputBinding;
 
 public class WaterUseInputFragment extends Fragment {
 
@@ -44,49 +46,13 @@ public class WaterUseInputFragment extends Fragment {
         waterUseInputViewModel = new ViewModelProvider(requireActivity()).get(WaterUseInputViewModel.class);
         binding = FragmentUsedwaterinputBinding.inflate(inflater, container, false);
 
+
         //매핑
         bt_save = binding.useWaterInputBtSave;
         sp_useType = binding.useWaterInputSpUseType;
         //et_testInput = binding.useWaterInputEtAmount;
 
-        //사용 용도 종류
-        ArrayAdapter<String> useTypeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, useWaterInputSpUseType);
-        useTypeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_useType.setAdapter(useTypeSpinnerAdapter);
-        sp_useType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long ld) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                waterUseInputViewModel.setSelectedSpinnnerValue(selectedItem);
 
-                if(sp_useType.getSelectedItem().toString() == "세탁"){
-                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
-                }
-                else if(sp_useType.getSelectedItem().toString() == "세차"){
-                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
-                }
-
-                else if(sp_useType.getSelectedItem().toString() == "설거지"){
-                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
-                }
-
-                else if(sp_useType.getSelectedItem().toString() == "목욕"){
-                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
-                }
-
-                else if(sp_useType.getSelectedItem().toString() == "사용자 입력"){
-                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
-                }
-
-
-                //세탁 선택시
-                // navController = NavHostFragment.findNavController(WaterUseFragment.this);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-
-        });
 
         return binding.getRoot();
     }
@@ -101,6 +67,55 @@ public class WaterUseInputFragment extends Fragment {
                 navController.navigate(R.id.action_navigation_waterUserInputFragment_to_navigation_home);
             }
         });
+
+        //사용 용도 종류
+        ArrayAdapter<String> useTypeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, useWaterInputSpUseType);
+        useTypeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_useType.setAdapter(useTypeSpinnerAdapter);
+        sp_useType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long ld) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                waterUseInputViewModel.setSelectedSpinnnerValue(selectedItem);
+
+
+                FragmentTransaction fragmentManager = getChildFragmentManager().beginTransaction();
+
+                if(sp_useType.getSelectedItem().toString() == "세탁"){
+
+                    UsedWaterInputLaundryFragment usedWaterInputLaundryFragment = new UsedWaterInputLaundryFragment();
+                    fragmentManager.replace(R.id.usedwaterinput_frameLayout, usedWaterInputLaundryFragment).commit();
+
+                }
+                else if(sp_useType.getSelectedItem().toString() == "세차"){
+                    UsedWaterInputWashCarFragment usedWaterInputWashCarFragment = new UsedWaterInputWashCarFragment();
+                    fragmentManager.replace(R.id.usedwaterinput_frameLayout, usedWaterInputWashCarFragment).commit();
+                }
+
+                else if(sp_useType.getSelectedItem().toString() == "설거지"){
+                    UsedWaterInputWashdishFragment usedWaterInputWashdishFragment = new UsedWaterInputWashdishFragment();
+                    fragmentManager.replace(R.id.usedwaterinput_frameLayout, usedWaterInputWashdishFragment).commit();
+
+                }
+
+                else if(sp_useType.getSelectedItem().toString() == "목욕"){
+                    UsedWaterInputShowerFragment usedWaterInputShowerFragment = new UsedWaterInputShowerFragment();
+                    fragmentManager.replace(R.id.usedwaterinput_frameLayout, usedWaterInputShowerFragment).commit();
+
+                }
+
+                else if(sp_useType.getSelectedItem().toString() == "사용자 입력"){
+                    UseWaterInputUserInputFragment usedWaterInputShowerFragment = new UseWaterInputUserInputFragment();
+                    fragmentManager.replace(R.id.usedwaterinput_frameLayout, usedWaterInputShowerFragment).commit();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+
+        });
+
     }
 }
 

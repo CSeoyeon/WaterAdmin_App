@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wateradmin.databinding.FragmentUsedwaterinputwashdishBinding;
 
-public class UserdWaterInputWashdishFragment extends Fragment {
+public class UsedWaterInputWashdishFragment extends Fragment {
 
     private FragmentUsedwaterinputwashdishBinding binding;
     private WaterUseInputViewModel waterUseInputViewModel;
