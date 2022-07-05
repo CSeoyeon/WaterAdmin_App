@@ -16,14 +16,14 @@ import com.example.wateradmin.databinding.FragmentUsedwaterinputwashdishBinding;
 public class UserdWaterInputWashdishFragment extends Fragment {
 
     private FragmentUsedwaterinputwashdishBinding binding;
-    private WaterViewModel waterViewModel;
+    private WaterUseInputViewModel waterUseInputViewModel;
     private RadioButton radioBt_handWash;
     private RadioButton radioBt_usedMachine;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        waterViewModel = new ViewModelProvider(this).get(WaterViewModel.class);
+        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
         binding = FragmentUsedwaterinputwashdishBinding.inflate(inflater, container, false);
 
         return binding.getRoot();

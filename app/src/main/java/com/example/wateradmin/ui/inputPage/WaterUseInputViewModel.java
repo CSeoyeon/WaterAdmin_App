@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wateradmin.R;
 
-public class WaterViewModel extends ViewModel {
+public class WaterUseInputViewModel extends ViewModel {
 
     private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private String selectedSpinnnerValue;

@@ -16,14 +16,14 @@ import com.example.wateradmin.databinding.FragmentUsedwaterinputwashcarBinding;
 public class UsedWaterInputWashCarFragment extends Fragment {
 
     private FragmentUsedwaterinputwashcarBinding binding;
-    private WaterViewModel waterViewModel;
+    private WaterUseInputViewModel waterUseInputViewModel;
     private EditText et_UsedCount;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        waterViewModel = new ViewModelProvider(this).get(WaterViewModel.class);
+        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
 
         binding = FragmentUsedwaterinputwashcarBinding.inflate(inflater, container, false);
 

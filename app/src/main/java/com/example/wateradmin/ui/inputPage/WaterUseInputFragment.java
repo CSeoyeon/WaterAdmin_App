@@ -1,17 +1,13 @@
 package com.example.wateradmin.ui.inputPage;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +19,11 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputBinding;
-import com.example.wateradmin.ui.home.HomeFragment;
 
 public class WaterUseInputFragment extends Fragment {
 
     private FragmentUsedwaterinputBinding binding;
-    private WaterViewModel waterViewModel;
+    private WaterUseInputViewModel waterUseInputViewModel;
 
     static final String[] useWaterInputSpUseType =new String[]{
             "세탁",
@@ -46,7 +41,7 @@ public class WaterUseInputFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
-        waterViewModel = new ViewModelProvider(requireActivity()).get(WaterViewModel.class);
+        waterUseInputViewModel = new ViewModelProvider(requireActivity()).get(WaterUseInputViewModel.class);
         binding = FragmentUsedwaterinputBinding.inflate(inflater, container, false);
 
         //매핑
@@ -62,7 +57,7 @@ public class WaterUseInputFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long ld) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                waterViewModel.setSelectedSpinnnerValue(selectedItem);
+                waterUseInputViewModel.setSelectedSpinnnerValue(selectedItem);
 
                 if(sp_useType.getSelectedItem().toString() == "세탁"){
                     navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
@@ -102,7 +97,7 @@ public class WaterUseInputFragment extends Fragment {
         bt_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //waterViewModel.addNewUsageRecord(Double.parseDouble(et_testInput.getText().toString()));
+                //waterUseInputViewModel.addNewUsageRecord(Double.parseDouble(et_testInput.getText().toString()));
                 navController.navigate(R.id.action_navigation_waterUserInputFragment_to_navigation_home);
             }
         });
@@ -248,10 +243,10 @@ public class WaterUseInputFragment extends Fragment {
 //            public void onClick(View view){
 //
 //                ETUsed.setText(Double.toString(allUsed));
-//                waterViewModel.setCarWash(ETCarWash.getText().toString());
-//                waterViewModel.setUserInputtedTime(ETUserInput.getText().toString());
-//                waterViewModel.setshowerTime(ETshower.getText().toString());
-//                waterViewModel.setIngestionPerson(ETIngestionInput.getText().toString());
+//                waterUseInputViewModel.setCarWash(ETCarWash.getText().toString());
+//                waterUseInputViewModel.setUserInputtedTime(ETUserInput.getText().toString());
+//                waterUseInputViewModel.setshowerTime(ETshower.getText().toString());
+//                waterUseInputViewModel.setIngestionPerson(ETIngestionInput.getText().toString());
 //
 //                /*
 //                Log.v("car","time: " + carWashUsed);
