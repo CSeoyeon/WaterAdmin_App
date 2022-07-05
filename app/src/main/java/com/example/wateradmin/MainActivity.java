@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.example.wateradmin.databinding.FragmentDashboardBinding;
 import com.example.wateradmin.ui.dashboard.DashboardFragment;
-import com.example.wateradmin.ui.inputPage.WaterUseFragment;
+import com.example.wateradmin.ui.inputPage.WaterUseInputFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

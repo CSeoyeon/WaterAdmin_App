@@ -22,7 +22,7 @@ import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentHomeBinding;
 import com.example.wateradmin.ui.inputPage.UsageRecordDate;
 import com.example.wateradmin.ui.inputPage.WaterUsageRecord;
-import com.example.wateradmin.ui.inputPage.WaterUseFragment;
+import com.example.wateradmin.ui.inputPage.WaterUseInputFragment;
 import com.example.wateradmin.ui.inputPage.WaterViewModel;
 
 import java.util.List;

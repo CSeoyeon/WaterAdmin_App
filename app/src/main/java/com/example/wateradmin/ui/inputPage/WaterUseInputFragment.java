@@ -22,13 +22,12 @@ import androidx.navigation.fragment.NavHostFragment;
 
 
 import com.example.wateradmin.R;
-import com.example.wateradmin.databinding.FragmentUsedWaterInputBinding;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputBinding;
 import com.example.wateradmin.ui.home.HomeFragment;
 
-public class WaterUseFragment extends Fragment {
+public class WaterUseInputFragment extends Fragment {
 
-    private FragmentUsedWaterInputBinding binding;
+    private FragmentUsedwaterinputBinding binding;
     private WaterViewModel waterViewModel;
 
     static final String[] useWaterInputSpUseType =new String[]{
@@ -46,9 +45,9 @@ public class WaterUseFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        navController = NavHostFragment.findNavController(WaterUseFragment.this);
+        navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
         waterViewModel = new ViewModelProvider(requireActivity()).get(WaterViewModel.class);
-        binding = FragmentUsedwaterBinding.inflate(inflater, container, false);
+        binding = FragmentUsedwaterinputBinding.inflate(inflater, container, false);
 
         //매핑
         bt_save = binding.useWaterInputBtSave;
@@ -66,22 +65,22 @@ public class WaterUseFragment extends Fragment {
                 waterViewModel.setSelectedSpinnnerValue(selectedItem);
 
                 if(sp_useType.getSelectedItem().toString() == "세탁"){
-                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
                 }
                 else if(sp_useType.getSelectedItem().toString() == "세차"){
-                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
                 }
 
                 else if(sp_useType.getSelectedItem().toString() == "설거지"){
-                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
                 }
 
                 else if(sp_useType.getSelectedItem().toString() == "목욕"){
-                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
                 }
 
                 else if(sp_useType.getSelectedItem().toString() == "사용자 입력"){
-                    navController = NavHostFragment.findNavController(WaterUseFragment.this);
+                    navController = NavHostFragment.findNavController(WaterUseInputFragment.this);
                 }
 
 
@@ -104,7 +103,7 @@ public class WaterUseFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //waterViewModel.addNewUsageRecord(Double.parseDouble(et_testInput.getText().toString()));
-                navController.navigate(R.id.action_navigation_usedWaterInputFragment_to_navigation_waterUserFragment);
+                navController.navigate(R.id.action_navigation_waterUserInputFragment_to_navigation_home);
             }
         });
     }
