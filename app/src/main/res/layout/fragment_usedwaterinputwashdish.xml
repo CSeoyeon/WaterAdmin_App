@@ -10,7 +10,7 @@
         android:layout_width="128dp"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:text="설거지 유형"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         android:layout_width="211dp"
         android:layout_height="220dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usedWaterWashDish_tv_title">
 

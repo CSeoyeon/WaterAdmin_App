@@ -12,43 +12,43 @@
         android:id="@+id/waterUseTX"
         android:layout_width="199dp"
         android:layout_height="44dp"
+        android:layout_marginEnd="32dp"
         android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/waterTaxTX"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="115dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="40dp"
-        android:text="수도 당일 사용량:"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="171dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="86dp"
         android:layout_height="43dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="292dp"
         android:text="당일 수도세:"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintBottom_toTopOf="@+id/homeAddBtn"
+        app:layout_constraintEnd_toStartOf="@+id/waterTaxTX"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/waterTaxTX"
         android:layout_width="164dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="324dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="288dp"
         android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/homeAddBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="115dp"
+        android:layout_height="44dp"
+        android:text="수도 당일 사용량:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/waterUseTX"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/homeAddBtn"

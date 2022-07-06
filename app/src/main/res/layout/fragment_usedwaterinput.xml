@@ -12,29 +12,31 @@
         android:id="@+id/useWaterInput_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginTop="164dp"
         android:text="물 사용량 입력"
         android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="154dp" />
+        app:layout_constraintBottom_toTopOf="@+id/useWaterInput_tv_subtitle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="35dp" />
 
     <TextView
         android:id="@+id/userWaterInput_tv_typeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         android:text="사용종류"
+        app:layout_constraintBottom_toTopOf="@+id/usedwaterinput_frameLayout"
         app:layout_constraintEnd_toStartOf="@+id/useWaterInput_sp_useType"
-        app:layout_constraintTop_toBottomOf="@+id/useWaterInput_tv_subtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/useWaterInput_tv_subtitle"
+        app:layout_constraintVertical_bias="0.956" />
 
     <Spinner
         android:id="@+id/useWaterInput_sp_useType"
         android:layout_width="280dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="40dp"
 
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/usedwaterinput_frameLayout"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -42,10 +44,11 @@
         android:id="@+id/useWaterInput_tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:text="1회 기준"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/useWaterInput_tv_title"
-        tools:layout_editor_absoluteX="28dp" />
+        app:layout_constraintBottom_toTopOf="@+id/useWaterInput_sp_useType"
+        app:layout_constraintStart_toStartOf="@+id/userWaterInput_tv_typeLabel" />
 
     <Button
         android:id="@+id/useWaterInput_bt_save"
@@ -60,10 +63,11 @@
 
     <FrameLayout
         android:id="@+id/usedwaterinput_frameLayout"
-        android:layout_width="409dp"
-        android:layout_height="367dp"
+        android:layout_width="413dp"
+        android:layout_height="330dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/useWaterInput_bt_save"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
     </FrameLayout>
