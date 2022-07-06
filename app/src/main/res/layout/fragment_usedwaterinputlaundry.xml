@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id ="@+id/fragment_usedWaterLaundry"
+    android:id ="@+id/fragment_usedwaterInputLaundry"
     tools:context="ui.inputPage.UsedWaterInputLaundryFragment">
 
     <TextView
@@ -73,8 +73,6 @@
         android:text="회"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/usedWaterLaundry_et_usedCount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/usedWaterLaundry_et_usedCount"
         app:layout_constraintTop_toTopOf="@+id/usedWaterLaundry_et_usedCount" />
 
@@ -88,5 +86,16 @@
         android:text="1"
         app:layout_constraintStart_toStartOf="@+id/usedWaterLaundry_tv_usedCount"
         app:layout_constraintTop_toBottomOf="@+id/usedWaterLaundry_tv_usedCount" />
+
+    <Button
+        android:id="@+id/usedWaterInputLaundry_bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="저장"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/usedWaterLaundry_tv_Count"
+        app:layout_constraintTop_toTopOf="@+id/usedWaterLaundry_tv_Count" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

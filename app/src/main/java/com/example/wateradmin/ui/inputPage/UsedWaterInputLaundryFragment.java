@@ -1,11 +1,14 @@
 package com.example.wateradmin.ui.inputPage;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,23 +16,27 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputlaundryBinding;
+
+import org.w3c.dom.Text;
 
 public class UsedWaterInputLaundryFragment extends Fragment {
 
     private FragmentUsedwaterinputlaundryBinding binding;
-    private WaterUseInputViewModel waterUseInputViewModel;
+    private UsedWaterInputLaundryViewModel usedWaterInputLaundryViewModel;
 
-    private RadioButton radioBt_basicModeCold;
-    private RadioButton radioBt_basicModeHot;
-    private RadioButton radioBt_beddingMode;
+    private RadioGroup radioG_laundryMode;
     private EditText et_usedCount;
+    private Button bt_save;
+
+    protected static double laundryWaterAmount = 0.0;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
+        usedWaterInputLaundryViewModel = new ViewModelProvider(this).get(UsedWaterInputLaundryViewModel.class);
 
         binding = FragmentUsedwaterinputlaundryBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -40,20 +47,41 @@ public class UsedWaterInputLaundryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //매핑
-        radioBt_basicModeCold = binding.usedWaterLaundryRadioBtBasicModeCold;
-        radioBt_basicModeHot = binding.usedWaterLaundryRadioBtBasicModeHot;
-        radioBt_beddingMode = binding.usedWaterLaundryRadioBtBedding;
+        radioG_laundryMode = view.findViewById(R.id.usedWaterLaundry_radigG_modeChoice);
         et_usedCount = binding.usedWaterLaundryEtUsedCount;
+        bt_save = binding.usedWaterInputLaundryBtSave;
+
+        radioG_laundryMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checked) {
+                switch(checked){
+                    case R.id.usedWaterLaundry_radioBt_basicModeCold:
+                        laundryWaterAmount = 89.0;
+                        break;
+
+                    case R.id.usedWaterLaundry_radioBt_basicModeHot:
+                        laundryWaterAmount = 80.5;
+                        break;
+                    case R.id.usedWaterLaundry_radioBt_bedding:
+                        laundryWaterAmount = 157.0;
+                        break;
+                }
+            }
+        });
+
+        bt_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                usedWaterInputLaundryViewModel.setUsedLaundryWater(Double.parseDouble(et_usedCount.getText().toString()));
+
+                Log.v("test", ""+et_usedCount.getText().toString());
+            }
+        });
+
+
 
     }
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            //https://developer.android.com/guide/topics/ui/controls/radiobutton?hl=ko
-        }
-    }
 
 }

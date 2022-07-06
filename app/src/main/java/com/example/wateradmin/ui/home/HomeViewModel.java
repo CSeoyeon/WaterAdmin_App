@@ -14,7 +14,7 @@ public class HomeViewModel extends ViewModel {
 
     private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private final MutableLiveData<String> mText;
-    private String usedWater, waterTax;
+    private String usedWaterAmount, waterTax;
 
 
     public HomeViewModel() {
@@ -32,16 +32,24 @@ public class HomeViewModel extends ViewModel {
         return waterUsageRecordRepository.getUsageRecordsForDate(date);
     }
 
+    public double getUsedLaundryWaterAmount(){
+        return waterUsageRecordRepository.getCalculateWaterAmount();
+    }
+
+    public double getUsedLaundryWaterTax(){
+        return waterUsageRecordRepository.getCalculateWaterTax();
+    }
+
     public LiveData<String> getText() {
         return mText;
     }
 
     public String getUsedWater() {
-        return usedWater;
+        return usedWaterAmount;
     }
 
     public void setUsedWater(String usedWater) {
-        this.usedWater = usedWater;
+        this.usedWaterAmount = usedWater;
     }
 
     public String getWaterTax() {

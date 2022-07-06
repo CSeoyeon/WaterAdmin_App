@@ -17,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentHomeBinding;
 import com.example.wateradmin.ui.inputPage.UsageRecordDate;
+import com.example.wateradmin.ui.inputPage.UsedWaterInputLaundryRecord;
 import com.example.wateradmin.ui.inputPage.WaterUsageRecord;
 import com.example.wateradmin.ui.inputPage.WaterUseInputViewModel;
 
@@ -25,12 +26,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private Button AddBtn;
-    private TextView todayUsedWater, todayWaterTax;
+    private Button bt_Add;
+    private TextView tx_todayUsedWater, tx_todayWaterTax;
     private HomeViewModel homeViewModel;
     private WaterUseInputViewModel waterUseInputViewModel;
 
-    Double getTodayUsedWater, getTodayWaterTax;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,12 +39,12 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         //매핑
-        todayUsedWater = binding.waterUseTX;
-        todayWaterTax = binding.waterTaxTX;
-        AddBtn = binding.homeAddBtn;
+        tx_todayUsedWater = binding.homeTxTodayWaterUsedAmount;
+        tx_todayWaterTax = binding.homeTxTodayWaterUsedTax;
+        bt_Add = binding.homeBtAdd;
 
         NavController homeNavController = NavHostFragment.findNavController(HomeFragment.this);
-        AddBtn.setOnClickListener(new View.OnClickListener() {
+        bt_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 homeNavController.navigate(R.id.action_navigation_home_to_navigation_waterUserFragment);
@@ -60,23 +60,14 @@ public class HomeFragment extends Fragment {
 
         List<WaterUsageRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
 
-        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
-            todayUsedWater.setText("" + (todayUsageRecords.size()));
-            todayWaterTax.setText("" + getTotalUsageAmount(todayUsageRecords));
-        }
+        tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
+        tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
 
-//        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
-//            @Override
-//            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-//                getTodayUsedWater = bundle.getDouble(("일_사용량"));
-//                getTodayWaterTax = bundle.getDouble(("일_수도세"));
-//
-//                //데이터 전달된 거 확인
-//                Log.v("tag","e"+getTodayUsedWater+getTodayWaterTax);
-//                todayUsedWater.setText(getTodayUsedWater.toString());
-//                todayWaterTax.setText(getTodayWaterTax.toString());
-//            }
-//        });
+//        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
+//            tx_todayUsedWater.setText("" + (todayUsageRecords.size()));
+//            tx_todayWaterTax.setText("" + getTotalUsageAmount(todayUsageRecords));
+//        }
+
 
     }
 

@@ -8,16 +8,58 @@
     tools:context=".ui.inputPage.WaterUseInputFragment">
 
 
+    <FrameLayout
+        android:id="@+id/usedwaterinput_frameLayout"
+        android:layout_width="413dp"
+        android:layout_height="330dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/useWaterInput_bt_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
+
+    <Spinner
+        android:id="@+id/useWaterInput_sp_useType"
+        android:layout_width="280dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="40dp"
+
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/usedwaterinput_frameLayout"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/useWaterInput_tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="1회 기준"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/useWaterInput_sp_useType"
+        app:layout_constraintStart_toStartOf="@+id/userWaterInput_tv_typeLabel" />
+
+    <Button
+        android:id="@+id/useWaterInput_bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입력완료"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.755" />
+
     <TextView
         android:id="@+id/useWaterInput_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginBottom="12dp"
         android:text="물 사용량 입력"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/useWaterInput_tv_subtitle"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="35dp" />
+        tools:layout_editor_absoluteX="32dp" />
 
     <TextView
         android:id="@+id/userWaterInput_tv_typeLabel"
@@ -29,48 +71,7 @@
         app:layout_constraintBottom_toTopOf="@+id/usedwaterinput_frameLayout"
         app:layout_constraintEnd_toStartOf="@+id/useWaterInput_sp_useType"
         app:layout_constraintTop_toBottomOf="@+id/useWaterInput_tv_subtitle"
-        app:layout_constraintVertical_bias="0.956" />
-
-    <Spinner
-        android:id="@+id/useWaterInput_sp_useType"
-        android:layout_width="280dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="40dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/usedwaterinput_frameLayout"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/useWaterInput_tv_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="1회 기준"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/useWaterInput_sp_useType"
-        app:layout_constraintStart_toStartOf="@+id/userWaterInput_tv_typeLabel" />
-
-    <Button
-        android:id="@+id/useWaterInput_bt_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="40dp"
-        android:text="입력완료"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <FrameLayout
-        android:id="@+id/usedwaterinput_frameLayout"
-        android:layout_width="413dp"
-        android:layout_height="330dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/useWaterInput_bt_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </FrameLayout>
+        app:layout_constraintVertical_bias="0.952" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
