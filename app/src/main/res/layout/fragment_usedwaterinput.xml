@@ -15,6 +15,7 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/useWaterInput_bt_save"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
     </FrameLayout>
@@ -33,7 +34,7 @@
         android:id="@+id/useWaterInput_tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:text="1회 기준"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/useWaterInput_sp_useType"
@@ -46,20 +47,19 @@
         android:text="입력완료"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintVertical_bias="0.768" />
 
     <TextView
         android:id="@+id/useWaterInput_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:text="물 사용량 입력"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/useWaterInput_tv_subtitle"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintStart_toStartOf="@+id/useWaterInput_tv_subtitle" />
 
     <TextView
         android:id="@+id/userWaterInput_tv_typeLabel"

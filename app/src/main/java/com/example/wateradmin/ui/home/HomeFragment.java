@@ -40,8 +40,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         //매핑
-        tx_todayUsedWater = binding.homeTxTodayWaterUsedAmount;
-        tx_todayWaterTax = binding.homeTxTodayWaterUsedTax;
+        tx_todayUsedWater = binding.homeTxShowtodayWaterUsedAmount;
+        tx_todayWaterTax = binding.homeTxShowtodayUsedWaterTax;
         bt_Add = binding.homeBtAdd;
 
         NavController homeNavController = NavHostFragment.findNavController(HomeFragment.this);

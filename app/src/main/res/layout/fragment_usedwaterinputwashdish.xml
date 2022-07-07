@@ -11,20 +11,23 @@
         android:id="@+id/usedWaterWashDish_tv_title"
         android:layout_width="128dp"
         android:layout_height="40dp"
-        android:layout_marginTop="28dp"
         android:text="설거지 유형"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/usedWaterWashDish_radigG_modeChoice"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <RadioGroup
         android:id="@+id/usedWaterWashDish_radigG_modeChoice"
         android:layout_width="207dp"
         android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/usedWaterWashDish_tv_title"
         app:layout_constraintTop_toBottomOf="@+id/usedWaterWashDish_tv_title">
 
         <TextView
@@ -53,12 +56,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="68dp"
         android:text="저장"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usedWaterWashDish_radigG_modeChoice"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/usedWaterWashDish_radigG_modeChoice"
+        app:layout_constraintTop_toBottomOf="@+id/usedWaterWashDish_radigG_modeChoice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

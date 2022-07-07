@@ -11,21 +11,22 @@
         android:id="@+id/usedWaterLaundry_tv_title"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:layout_marginTop="16dp"
         android:text="세탁 방법"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/usedWaterLaundry_radigG_modeChoice"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
 
     <RadioGroup
         android:id="@+id/usedWaterLaundry_radigG_modeChoice"
         android:layout_width="206dp"
         android:layout_height="183dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/usedWaterLaundry_tv_title"
         app:layout_constraintTop_toBottomOf="@+id/usedWaterLaundry_tv_title">
 
         <TextView
@@ -67,14 +68,14 @@
 
     <TextView
         android:id="@+id/usedWaterLaundry_tv_Count"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="41dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="32dp"
         android:text="회"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/usedWaterLaundry_et_usedCount"
         app:layout_constraintStart_toEndOf="@+id/usedWaterLaundry_et_usedCount"
-        app:layout_constraintTop_toTopOf="@+id/usedWaterLaundry_et_usedCount" />
+        app:layout_constraintTop_toBottomOf="@+id/usedWaterLaundry_radigG_modeChoice" />
 
     <EditText
         android:id="@+id/usedWaterLaundry_et_usedCount"
@@ -94,7 +95,7 @@
         android:layout_marginStart="8dp"
         android:text="저장"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toEndOf="@+id/usedWaterLaundry_tv_Count"
         app:layout_constraintTop_toTopOf="@+id/usedWaterLaundry_tv_Count" />
 
