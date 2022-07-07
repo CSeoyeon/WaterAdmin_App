@@ -28,7 +28,7 @@ public class UsedWaterInputLaundryViewModel extends ViewModel {
 //        }
 
         UsedWaterInputLaundryRecord laundryAdd = new UsedWaterInputLaundryRecord(setUsedLaundryWater(usedLaundryWaterAmount, usedCount));
-        waterUsageRecordRepository.addCalculateWaterAmount(laundryAdd);
+        waterUsageRecordRepository.setAddLaundry(laundryAdd);
     }
 
     public String getSelectedRadioValue() {

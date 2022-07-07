@@ -35,11 +35,11 @@ public class HomeViewModel extends ViewModel {
     }
 
     public double getUsedLaundryWaterAmount(){
-        return waterUsageRecordRepository.getCalculateWaterAmount();
+        return waterUsageRecordRepository.setCalculateWaterAmount();
     }
 
     public double getUsedLaundryWaterTax(){
-        return waterUsageRecordRepository.getCalculateWaterTax();
+        return waterUsageRecordRepository.setCalculateWaterTax();
     }
 
     public LiveData<String> getText() {

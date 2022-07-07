@@ -13,7 +13,15 @@ public class WaterUsageRecordRepository {
     private List<WaterUsageRecord> allUsageRecords;
     private Map<UsageRecordDate, List<WaterUsageRecord>> dateUsageRecordsMap;
 
-    private static double usedWaterAmount, waterTax;
+    private UsedWaterInputLaundryRecord addLaundry;
+    private UsedWaterInputShowerRecord addShower;
+    private UsedWaterInputWashdishRecord addWashdish;
+    private UsedWaterInputWashCarRecord addWashCar;
+    private UsedWaterInputUserInputRecord addUserInput;
+
+    private static double laundryAmount, showerAmount, washdishAmount, washCarAmount, userInputAmount;
+
+    private static double  allUsedAmount, waterTax;
     
     private WaterUsageRecordRepository() {
         allUsageRecords = new ArrayList<>();
@@ -44,29 +52,94 @@ public class WaterUsageRecordRepository {
         return dateUsageRecordsMap.get(date);
     }
 
-    public void addCalculateWaterAmount(UsedWaterInputLaundryRecord addLaundry) {
-        Log.v("test", ""+addLaundry.getUsedWaterAmount());
-        usedWaterAmount += addLaundry.getUsedWaterAmount();
-        addCalculateWaterTax();
+    //record
+
+    public UsedWaterInputLaundryRecord getAddLaundry() {
+        return addLaundry;
     }
 
-    public void addCalculateWaterTax(){
-        if(usedWaterAmount >= 0 && usedWaterAmount <= 20000){
-            waterTax = usedWaterAmount * 460;
+    public double setAddLaundry(UsedWaterInputLaundryRecord addLaundry) {
+        this.addLaundry = addLaundry;
+        laundryAmount = addLaundry.getUsedWaterAmount();
+
+        Log.v("세탁", " "+laundryAmount);
+
+        return laundryAmount;
+    }
+
+    public UsedWaterInputShowerRecord getAddShower() {
+        return addShower;
+    }
+
+    public double setAddShower(UsedWaterInputShowerRecord addShower) {
+        this.addShower = addShower;
+        showerAmount = addShower.getUsedShowerWaterAmount();
+
+        Log.v("샤워", " "+showerAmount);
+
+        return showerAmount;
+    }
+
+    public UsedWaterInputWashdishRecord getAddWashdish() {
+        return addWashdish;
+    }
+
+    public double setAddWashdish(UsedWaterInputWashdishRecord addWashdish) {
+        this.addWashdish = addWashdish;
+        washdishAmount = addWashdish.getUsedWashDishWaterAmount();
+        Log.v("설거지", " "+showerAmount);
+        return washdishAmount;
+    }
+
+    public UsedWaterInputWashCarRecord getAddWashCar() {
+        return addWashCar;
+    }
+
+    public double setAddWashCar(UsedWaterInputWashCarRecord addWashCar) {
+        this.addWashCar = addWashCar;
+        washCarAmount = addWashCar.getUseWashCarWaterAmount();
+
+        Log.v("세차", " "+washCarAmount);
+
+        return washCarAmount;
+    }
+
+    public UsedWaterInputUserInputRecord getAddUserInput() {
+        return addUserInput;
+    }
+
+    public double setAddUserInput(UsedWaterInputUserInputRecord addUserInput) {
+        this.addUserInput = addUserInput;
+        userInputAmount = addUserInput.getUsedWater();
+        Log.v("사용자 입력", " "+washCarAmount);
+        return userInputAmount;
+    }
+
+
+
+    public void addCalculateWaterAmount(double laundryAmount, double showerAmount, double washCarAmount, double washdishAmount, double userInputAmount) {
+        allUsedAmount += laundryAmount + showerAmount + washCarAmount + userInputAmount +washdishAmount;
+        addCalculateWaterTax(allUsedAmount);
+    }
+
+    public void addCalculateWaterTax(double allUsedAmount){
+        if(allUsedAmount >= 0 && allUsedAmount <= 20000){
+            waterTax = allUsedAmount * 460;
         }
-        else if(usedWaterAmount >= 21000 && usedWaterAmount <40000){
-            waterTax = usedWaterAmount * 720;
+        else if(allUsedAmount >= 21000 && allUsedAmount <40000){
+            waterTax = allUsedAmount * 720;
         }
-        else{ waterTax = usedWaterAmount * 950; }
+        else{ waterTax = allUsedAmount * 950; }
 
 
     }
 
-    public double getCalculateWaterAmount(){
-        return usedWaterAmount;
+    public double setCalculateWaterAmount(){
+        addCalculateWaterAmount(laundryAmount, showerAmount, washCarAmount, washdishAmount, userInputAmount);
+        return allUsedAmount;
     }
 
-    public double getCalculateWaterTax(){
+    public double setCalculateWaterTax(){
         return waterTax;
     }
 

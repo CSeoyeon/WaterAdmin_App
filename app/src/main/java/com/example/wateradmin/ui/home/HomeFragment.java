@@ -59,13 +59,11 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
+        tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
+
         List<WaterUsageRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
 
-        tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
-
-        //Log.v("test", ""+homeViewModel.getUsedLaundryWaterAmount());
-
-        tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
 
 
 //        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {

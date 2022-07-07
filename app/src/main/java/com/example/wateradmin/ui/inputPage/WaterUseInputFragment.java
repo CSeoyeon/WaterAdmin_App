@@ -105,7 +105,7 @@ public class WaterUseInputFragment extends Fragment {
                 }
 
                 else if(sp_useType.getSelectedItem().toString() == "사용자 입력"){
-                    UseWaterInputUserInputFragment usedWaterInputShowerFragment = new UseWaterInputUserInputFragment();
+                    UsedWaterInputUserInputFragment usedWaterInputShowerFragment = new UsedWaterInputUserInputFragment();
                     fragmentManager.replace(R.id.usedwaterinput_frameLayout, usedWaterInputShowerFragment).commit();
                 }
 
@@ -121,49 +121,7 @@ public class WaterUseInputFragment extends Fragment {
 
 
 
-        //매핑
-        //입력
-//        EditText ETshower = binding.showerInput;
-//        EditText ETCarWash = binding.washcarInput;
-//        EditText ETUserInput = binding.userInput;
-//        EditText ETIngestionInput = binding.ingestionInput;
-//        Spinner SLaundry  = binding.spinnerWash;
-//        Spinner SWashDish = binding.spinnerDishWash;
-//
-//        //세탁 선택
-//        ArrayAdapter<String> laundryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, laundry);
-//        laundryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        SLaundry.setAdapter(laundryAdapter);
-//        SLaundry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String laundryText =parent.getItemAtPosition(position).toString();
-//                if (laundryText == "표준코스(40도 이상)"){
-//                    laundryResult ="표준코스(40도 이상)";
-//                    laundryUsed =89;
-//                }
-//                else if (laundryText == "표준 코드(냉수)"){
-//                    laundryResult ="표준 코드(냉수)";
-//                    laundryUsed = 80.5;
-//                }
-//                else if (laundryText == "이불 세탁"){
-//                    laundryResult ="이불 세탁";
-//                    laundryUsed =157;
-//                }
-//                else if (laundryText == "없음"){
-//                    laundryResult ="없음";
-//                    laundryUsed =0;
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                laundryUsed = 0;
-//            }
-//
-//        });
+
 //
 //        //설거지 선택
 //        ArrayAdapter<String> washDishAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dishwash);

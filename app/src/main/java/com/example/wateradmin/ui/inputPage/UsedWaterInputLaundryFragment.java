@@ -74,7 +74,6 @@ public class UsedWaterInputLaundryFragment extends Fragment {
             public void onClick(View view) {
 
                 usedWaterInputLaundryViewModel.addLaundryWaterAmountRecord(laundryWaterAmount, Double.parseDouble(et_usedCount.getText().toString()));
-                //usedWaterInputLaundryViewModel.setUsedLaundryWater(laundryWaterAmount, Double.parseDouble(et_usedCount.getText().toString()));
 
             }
         });

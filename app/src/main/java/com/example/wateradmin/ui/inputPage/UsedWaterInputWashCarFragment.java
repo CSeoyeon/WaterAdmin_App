@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -16,14 +17,16 @@ import com.example.wateradmin.databinding.FragmentUsedwaterinputwashcarBinding;
 public class UsedWaterInputWashCarFragment extends Fragment {
 
     private FragmentUsedwaterinputwashcarBinding binding;
-    private WaterUseInputViewModel waterUseInputViewModel;
-    private EditText et_UsedCount;
+    private UsedWaterInputWashCarViewModel usedWaterInputWashCarViewModel;
+
+    private EditText et_usedCount;
+    private Button bt_save;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
+        usedWaterInputWashCarViewModel = new ViewModelProvider(this).get(UsedWaterInputWashCarViewModel.class);
 
         binding = FragmentUsedwaterinputwashcarBinding.inflate(inflater, container, false);
 
@@ -34,6 +37,16 @@ public class UsedWaterInputWashCarFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        et_UsedCount = binding.usedWaterWashCarEtUsedCount;
+        et_usedCount = binding.usedWaterWashCarEtUsedCount;
+        bt_save = binding.usedWaterInputUserInputBtSave;
+
+        bt_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                usedWaterInputWashCarViewModel.addShowerWaterAmountRecord(Integer.parseInt(et_usedCount.getText().toString()));
+
+            }
+        });
     }
 }
