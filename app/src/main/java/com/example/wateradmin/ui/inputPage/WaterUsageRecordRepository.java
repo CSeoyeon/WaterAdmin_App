@@ -111,7 +111,9 @@ public class WaterUsageRecordRepository {
     public double setAddUserInput(UsedWaterInputUserInputRecord addUserInput) {
         this.addUserInput = addUserInput;
         userInputAmount = addUserInput.getUsedWater();
-        Log.v("사용자 입력", " "+washCarAmount);
+
+        Log.v("사용자 입력", " "+userInputAmount );
+
         return userInputAmount;
     }
 

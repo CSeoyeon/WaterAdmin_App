@@ -1,13 +1,19 @@
 package com.example.wateradmin.ui.inputPage;
 
+import android.util.Log;
+
 import androidx.lifecycle.ViewModel;
 
 public class UsedWaterInputUserInputViewModel extends ViewModel {
     WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private double usedWaterInput;
+    private String unitSelectedSpinnerValue;
 
     public void addUserInputWaterAmountRecord(double usedWaterInput){
-        UsedWaterInputUserInputRecord usedWaterInputRecord  = new UsedWaterInputUserInputRecord(usedWaterInput);
+
+        setUsedWaterInput(usedWaterInput);
+        UsedWaterInputUserInputRecord usedWaterInputRecord  = new UsedWaterInputUserInputRecord(setUnitSelectedSpinnerValue(unitSelectedSpinnerValue));
+
         waterUsageRecordRepository.setAddUserInput(usedWaterInputRecord);
     }
 
@@ -18,4 +24,32 @@ public class UsedWaterInputUserInputViewModel extends ViewModel {
     public void setUsedWaterInput(double usedWaterInput) {
         this.usedWaterInput = usedWaterInput;
     }
+
+    public String getUnitSelectedSpinnerValue() {
+        return unitSelectedSpinnerValue;
+    }
+
+    public double setUnitSelectedSpinnerValue(String unitSelectedSpinnerValue) {
+        this.unitSelectedSpinnerValue = unitSelectedSpinnerValue;
+
+        if (unitSelectedSpinnerValue == "L(리터)") {
+            return usedWaterInput;
+        }
+        else if (unitSelectedSpinnerValue == "ml(밀리리터)") {
+            return usedWaterInput / 1000;
+        }
+        else if (unitSelectedSpinnerValue == "dl(데시리터)") {
+            return usedWaterInput / 10;
+        }
+        else if (unitSelectedSpinnerValue == "cm3(세제곱센티미터)") {
+            return usedWaterInput * 1000;
+        }
+
+        return usedWaterInput;
+
+
+    }
+
+
+
 }

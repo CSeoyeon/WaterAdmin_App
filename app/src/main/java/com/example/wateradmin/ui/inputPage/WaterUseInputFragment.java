@@ -76,7 +76,7 @@ public class WaterUseInputFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long ld) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                waterUseInputViewModel.setSelectedSpinnnerValue(selectedItem);
+                waterUseInputViewModel.setSelectedSpinnerValue(selectedItem);
 
 
                 FragmentTransaction fragmentManager = getChildFragmentManager().beginTransaction();

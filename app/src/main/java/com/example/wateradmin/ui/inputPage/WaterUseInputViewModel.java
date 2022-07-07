@@ -10,11 +10,11 @@ import com.example.wateradmin.R;
 public class WaterUseInputViewModel extends ViewModel {
 
     private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
-    private String selectedSpinnnerValue;
+    private String selectedSpinnerValue;
 
     public void addNewUsageRecord(double amountInLiters) {
         UsageType usageType = UsageType.SHOWER;
-        switch (selectedSpinnnerValue) {
+        switch (selectedSpinnerValue) {
             case "세탁":
                 usageType = UsageType.LAUNDRY;
                 break;
@@ -36,12 +36,12 @@ public class WaterUseInputViewModel extends ViewModel {
         waterUsageRecordRepository.addUsageRecord(toAdd);
     }
 
-    public String getSelectedSpinnnerValue() {
-        return selectedSpinnnerValue;
+    public String getSelectedSpinnerValue() {
+        return selectedSpinnerValue;
     }
 
-    public void setSelectedSpinnnerValue(String selectedSpinnnerValue) {
-        this.selectedSpinnnerValue =selectedSpinnnerValue;
+    public void setSelectedSpinnerValue(String selectedSpinnerValue) {
+        this.selectedSpinnerValue =selectedSpinnerValue;
     }
 
 
