@@ -1,11 +1,12 @@
 package com.example.wateradmin.ui.inputPage;
 
+import android.util.Log;
+
 public class UsedWaterInputLaundryRecord {
 
     private LaundryType type;
-    private double usedWaterAmount;
-    public UsedWaterInputLaundryRecord(LaundryType type, double usedLaundryWaterAmount){
-        this.type = type;
+    private static double usedWaterAmount;
+    public UsedWaterInputLaundryRecord(double usedLaundryWaterAmount){
         this.usedWaterAmount = usedLaundryWaterAmount;
     }
 
@@ -23,5 +24,7 @@ public class UsedWaterInputLaundryRecord {
 
     public void setUsedWaterAmount(double usedWaterAmount) {
         this.usedWaterAmount = usedWaterAmount;
+
     }
+
 }

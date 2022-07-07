@@ -1,6 +1,7 @@
 package com.example.wateradmin.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,11 @@ public class HomeFragment extends Fragment {
         List<WaterUsageRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
 
         tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
+
+        //Log.v("test", ""+homeViewModel.getUsedLaundryWaterAmount());
+
         tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
+
 
 //        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
 //            tx_todayUsedWater.setText("" + (todayUsageRecords.size()));

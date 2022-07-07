@@ -44,19 +44,20 @@ public class WaterUsageRecordRepository {
         return dateUsageRecordsMap.get(date);
     }
 
-    public void addCalculateWaterAmount(double waterAmount) {
-        usedWaterAmount += waterAmount;
-        //Log.v("test", ""+usedWaterAmount);
+    public void addCalculateWaterAmount(UsedWaterInputLaundryRecord addLaundry) {
+        Log.v("test", ""+addLaundry.getUsedWaterAmount());
+        usedWaterAmount += addLaundry.getUsedWaterAmount();
+        addCalculateWaterTax();
     }
 
-    public void addCalculateWaterTax(double waterAmount){
-        if(waterAmount >= 0 && waterAmount <= 20000){
-            waterTax = waterAmount * 460;
+    public void addCalculateWaterTax(){
+        if(usedWaterAmount >= 0 && usedWaterAmount <= 20000){
+            waterTax = usedWaterAmount * 460;
         }
-        else if(waterAmount >= 21000 && waterAmount <40000){
-            waterTax = waterAmount * 720;
+        else if(usedWaterAmount >= 21000 && usedWaterAmount <40000){
+            waterTax = usedWaterAmount * 720;
         }
-        else{ waterTax = waterAmount * 950; }
+        else{ waterTax = usedWaterAmount * 950; }
 
 
     }
