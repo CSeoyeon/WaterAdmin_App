@@ -17,27 +17,17 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
-
-    <TextView
-        android:id="@+id/recordList_tv_useWater"
-        android:layout_width="208dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:text="입력된 물 양"
-        app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
-        app:layout_constraintTop_toBottomOf="@+id/recordList_tv_useType" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <TextView
         android:id="@+id/recordList_tv_useType"
         android:layout_width="208dp"
         android:layout_height="22dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="사용 용도"
         app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
         app:layout_constraintTop_toBottomOf="@+id/recordList_tv_dateView" />
@@ -46,20 +36,30 @@
         android:id="@+id/recordList_tv_waterTax"
         android:layout_width="208dp"
         android:layout_height="22dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="계산된 수도량 "
         app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
         app:layout_constraintTop_toBottomOf="@+id/recordList_tv_useWater" />
 
-       <TextView
+    <TextView
         android:id="@+id/recordList_tv_dateView"
         android:layout_width="208dp"
         android:layout_height="22dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
         android:text="2022:00:00"
         app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
         app:layout_constraintTop_toBottomOf="@+id/recordList_tv_waterRecord" />
+
+    <TextView
+        android:id="@+id/recordList_tv_useWater"
+        android:layout_width="208dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="입력된 물 양"
+        app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
+        app:layout_constraintTop_toBottomOf="@+id/recordList_tv_useType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@ public class RecordListFragment extends Fragment {
         recordListViewModel = new ViewModelProvider(this).get(RecordListViewModel.class);
         binding = FragmentRecordlistBinding.inflate(inflater, container, false);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return binding.getRoot();
     }
 
     @Override
