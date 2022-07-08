@@ -16,6 +16,8 @@ public class WaterUsageRecordRepository {
     //private List<WaterUsageRecord> allUsageRecords;
     //private Map<UsageRecordDate, List<WaterUsageRecord>> dateUsageRecordsMap;
 
+    private List<UsedWaterInputLaundryRecord> laundryRecords = new ArrayList<>();
+    private Map<UsageRecordDate, List<WaterUsageRecord>> datelaundryRecordsMap = new HashMap<UsageRecordDate, List<WaterUsageRecord>>();
 
     //record
     private UsedWaterInputLaundryRecord addLaundry;
@@ -24,12 +26,21 @@ public class WaterUsageRecordRepository {
     private UsedWaterInputWashCarRecord addWashCar;
     private UsedWaterInputUserInputRecord addUserInput;
 
+    //record tag
+    private static String laundryTag, showerTag, washdishTag, washCarTag, userInputTag;
+
+    //record date
+    private UsageRecordDate laundryDate, showerDate, washdishDate, washCarDatem, userInputDate;
+
     //물 사용량
     private static double laundryAmount, showerAmount, washdishAmount, washCarAmount, userInputAmount;
 
-    //총 사용량, 수도세
-    private static double  allUsedAmount, waterTax;
-    
+    //각각 사용량, 수도세
+    private double laundryWaterTax, showerWaterTax, washdishWaterTax, washCarWaterTax, userInputWaterTax;
+
+    //총량 사용량, 수도세
+    private static double allUsedAmount, allUsedWaterTax;
+
     private WaterUsageRecordRepository() {
         allUsageRecords = new ArrayList<>();
         dateUsageRecordsMap = new HashMap<>();
@@ -38,47 +49,6 @@ public class WaterUsageRecordRepository {
     public static WaterUsageRecordRepository getInstance() {
         return INSTANCE;
     }
-
-    public void addUsageRecord(UsedWaterInputLaundryRecord toAdd) {
-        allUsageRecords.add(toAdd);
-        if (dateUsageRecordsMap.containsKey(toAdd.getDate())) {
-            List<UsedWaterInputLaundryRecord> recordsForDate = dateUsageRecordsMap.get(toAdd.getDate());
-            recordsForDate.add(toAdd);
-        } else {
-            List<UsedWaterInputLaundryRecord> recordListToAdd = new ArrayList<>();
-            recordListToAdd.add(toAdd);
-            dateUsageRecordsMap.put(toAdd.getDate(), recordListToAdd);
-        }
-    }
-
-//        public void addUsageRecord(WaterUsageRecord toAdd) {
-//        allUsageRecords.add(toAdd);
-//        if (dateUsageRecordsMap.containsKey(toAdd.getDate())) {
-//            List<WaterUsageRecord> recordsForDate = dateUsageRecordsMap.get(toAdd.getDate());
-//            recordsForDate.add(toAdd);
-//        } else {
-//            List<WaterUsageRecord> recordListToAdd = new ArrayList<>();
-//            recordListToAdd.add(toAdd);
-//            dateUsageRecordsMap.put(toAdd.getDate(), recordListToAdd);
-//        }
-//    }
-
-
-    public List<UsedWaterInputLaundryRecord> getAllUsageRecords() {
-        return allUsageRecords;
-    }
-
-    public List<UsedWaterInputLaundryRecord> getUsageRecordsForDate(UsageRecordDate date) {
-        return dateUsageRecordsMap.get(date);
-    }
-
-//    public List<WaterUsageRecord> getAllUsageRecords() {
-//        return allUsageRecords;
-//    }
-//
-//    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date) {
-//        return dateUsageRecordsMap.get(date);
-//    }
 
 
     //계산(사용량, 수도세)
@@ -89,8 +59,13 @@ public class WaterUsageRecordRepository {
     public double setAddLaundry(UsedWaterInputLaundryRecord addLaundry) {
         this.addLaundry = addLaundry;
         laundryAmount = addLaundry.getUsedWaterAmount();
+        laundryTag = (addLaundry.getLaundryType()).toString();
+        laundryDate = addLaundry.getDate();
+        laundryWaterTax = CalculateWaterTax(laundryWaterTax, laundryAmount);
 
-        Log.v("세탁", " "+laundryAmount);
+        Log.v("세탁 물 사용량", " "+laundryAmount);
+        Log.v("세탁 수도세", " "+laundryWaterTax);
+        Log.v("세탁 date", ""+laundryDate);
 
         return laundryAmount;
     }
@@ -102,6 +77,8 @@ public class WaterUsageRecordRepository {
     public double setAddShower(UsedWaterInputShowerRecord addShower) {
         this.addShower = addShower;
         showerAmount = addShower.getUsedShowerWaterAmount();
+        showerTag = addShower.getShowerType();
+
 
         Log.v("샤워", " "+showerAmount);
 
@@ -115,6 +92,8 @@ public class WaterUsageRecordRepository {
     public double setAddWashdish(UsedWaterInputWashdishRecord addWashdish) {
         this.addWashdish = addWashdish;
         washdishAmount = addWashdish.getUsedWashDishWaterAmount();
+        washdishTag = (addWashdish.getDishType()).toString();
+
         Log.v("설거지", " "+showerAmount);
         return washdishAmount;
     }
@@ -126,7 +105,7 @@ public class WaterUsageRecordRepository {
     public double setAddWashCar(UsedWaterInputWashCarRecord addWashCar) {
         this.addWashCar = addWashCar;
         washCarAmount = addWashCar.getUseWashCarWaterAmount();
-
+        washCarTag = addWashCar.getCarWashType();
         Log.v("세차", " "+washCarAmount);
 
         return washCarAmount;
@@ -139,41 +118,92 @@ public class WaterUsageRecordRepository {
     public double setAddUserInput(UsedWaterInputUserInputRecord addUserInput) {
         this.addUserInput = addUserInput;
         userInputAmount = addUserInput.getUsedWater();
-
+        userInputTag = addUserInput.getUsedType();
         Log.v("사용자 입력", " "+userInputAmount );
-
         return userInputAmount;
     }
 
 
-
-    public void addCalculateWaterAmount(double laundryAmount, double showerAmount, double washCarAmount, double washdishAmount, double userInputAmount) {
-        allUsedAmount += laundryAmount + showerAmount + washCarAmount + userInputAmount +washdishAmount;
-        addCalculateWaterTax(allUsedAmount);
+    public double CalculateWaterTax(double waterTax, double UsedAmount){
+        if(UsedAmount >= 0 && UsedAmount <= 20000){
+            waterTax = UsedAmount * 460;
+            return waterTax;
+        }
+        else if(UsedAmount >= 21000 && UsedAmount <40000){
+            waterTax = UsedAmount * 720;
+            return waterTax;
+        }
+        else{
+            waterTax = UsedAmount * 950;
+            return waterTax; }
     }
 
-    public void addCalculateWaterTax(double allUsedAmount){
-        if(allUsedAmount >= 0 && allUsedAmount <= 20000){
-            waterTax = allUsedAmount * 460;
-        }
-        else if(allUsedAmount >= 21000 && allUsedAmount <40000){
-            waterTax = allUsedAmount * 720;
-        }
-        else{ waterTax = allUsedAmount * 950; }
 
+    public double allCalculateWaterAmount(double laundryAmount, double showerAmount, double washCarAmount, double washdishAmount, double userInputAmount) {
+        allUsedAmount += laundryAmount + showerAmount + washCarAmount + userInputAmount +washdishAmount;
+        return allUsedAmount;
+    }
 
+    public double allCalculateWaterTax(double laundryWaterTax, double showerWaterTax, double washCarWaterTax, double washdishWaterTax, double userInputWaterTax){
+        allUsedWaterTax = laundryWaterTax + showerWaterTax + washCarWaterTax + washdishWaterTax + userInputWaterTax;
+        return allUsedWaterTax;
     }
 
     public double setCalculateWaterAmount(){
-        addCalculateWaterAmount(laundryAmount, showerAmount, washCarAmount, washdishAmount, userInputAmount);
+        allCalculateWaterAmount(laundryAmount, showerAmount, washCarAmount, washdishAmount, userInputAmount);
         return allUsedAmount;
     }
 
     public double setCalculateWaterTax(){
-        return waterTax;
+        allCalculateWaterTax(laundryWaterTax, showerWaterTax,  washCarWaterTax,  washdishWaterTax, userInputWaterTax);
+        return allUsedWaterTax;
     }
 
 
 
+    //tag
+    public static String getLaundryTag() {
+        return laundryTag;
+    }
 
+    public static void setLaundryTag(String laundryTag) {
+        WaterUsageRecordRepository.laundryTag = laundryTag;
+    }
+
+    public static String getShowerTag() {
+        return showerTag;
+    }
+
+    public static void setShowerTag(String showerTag) {
+        WaterUsageRecordRepository.showerTag = showerTag;
+    }
+
+    public static String getWashdishTag() {
+        return washdishTag;
+    }
+
+    public static void setWashdishTag(String washdishTag) {
+        WaterUsageRecordRepository.washdishTag = washdishTag;
+    }
+
+    public static String getWashCarTag() {
+        return washCarTag;
+    }
+
+    public static void setWashCarTag(String washCarTag) {
+        WaterUsageRecordRepository.washCarTag = washCarTag;
+    }
+
+    public static String getUserInputTag() {
+        return userInputTag;
+    }
+
+    public static void setUserInputTag(String userInputTag) {
+        WaterUsageRecordRepository.userInputTag = userInputTag;
+    }
+
+    public void addLaundryRecord(String laundryTag, double laundryAmount, double laundryWaterTax, UsageRecordDate date){
+
+
+    }
 }

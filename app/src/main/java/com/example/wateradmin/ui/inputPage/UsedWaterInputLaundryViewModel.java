@@ -25,7 +25,7 @@ public class UsedWaterInputLaundryViewModel extends ViewModel {
         }
         UsedWaterInputLaundryRecord laundryAdd = new UsedWaterInputLaundryRecord(laundryType, setUsedLaundryWater(usedLaundryWaterAmount, usedCount), System.currentTimeMillis());
         waterUsageRecordRepository.setAddLaundry(laundryAdd);
-        waterUsageRecordRepository.addUsageRecord(laundryAdd);
+
 
     }
 

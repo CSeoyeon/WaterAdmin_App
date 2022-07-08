@@ -25,25 +25,6 @@ public class HomeViewModel extends ViewModel {
         mText.setValue("This is home fragment");
     }
 
-    public List<UsedWaterInputLaundryRecord> getAllUsageRecords()
-    {
-        return waterUsageRecordRepository.getAllUsageRecords();
-    }
-
-    public List<UsedWaterInputLaundryRecord> getUsageRecordsForDate(UsageRecordDate date)
-    {
-        return waterUsageRecordRepository.getUsageRecordsForDate(date);
-    }
-
-//    public List<WaterUsageRecord> getAllUsageRecords()
-//    {
-//        return waterUsageRecordRepository.getAllUsageRecords();
-//    }
-//
-//    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date)
-//    {
-//        return waterUsageRecordRepository.getUsageRecordsForDate(date);
-//    }
 
     public double getUsedLaundryWaterAmount(){
         return waterUsageRecordRepository.setCalculateWaterAmount();

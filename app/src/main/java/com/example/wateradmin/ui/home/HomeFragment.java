@@ -75,14 +75,6 @@ public class HomeFragment extends Fragment {
         tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
         tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
 
-        Log.v("","test"+ homeViewModel.getAllUsageRecords());
-
-        List<UsedWaterInputLaundryRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
-        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
-            //tx_todayUsedWater.setText("" + (todayUsageRecords.size()));
-            //tx_todayWaterTax.setText("" + getTotalUsageAmount(todayUsageRecords));
-
-        }
 
 
     }
