@@ -32,6 +32,9 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private WaterUseInputViewModel waterUseInputViewModel;
 
+    //기록 이동 버튼
+    private Button bt_recordView;
+    //
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class HomeFragment extends Fragment {
         tx_todayWaterTax = binding.homeTxShowtodayUsedWaterTax;
         bt_Add = binding.homeBtAdd;
 
+        bt_recordView = binding.homeBtRecordView;
+
         NavController homeNavController = NavHostFragment.findNavController(HomeFragment.this);
         bt_Add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +56,14 @@ public class HomeFragment extends Fragment {
                 homeNavController.navigate(R.id.action_navigation_home_to_navigation_waterUserFragment);
             }
         });
+
+        bt_recordView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeNavController.navigate(R.id.action_navigation_home_to_navigation_recordViewFragment);
+            }
+        });
+
 
         return binding.getRoot();
     }
@@ -62,14 +75,14 @@ public class HomeFragment extends Fragment {
         tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
         tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
 
-        List<WaterUsageRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
+        Log.v("","test"+ homeViewModel.getAllUsageRecords());
 
+        List<UsedWaterInputLaundryRecord> todayUsageRecords = homeViewModel.getUsageRecordsForDate(new UsageRecordDate(System.currentTimeMillis()));
+        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
+            //tx_todayUsedWater.setText("" + (todayUsageRecords.size()));
+            //tx_todayWaterTax.setText("" + getTotalUsageAmount(todayUsageRecords));
 
-
-//        if (todayUsageRecords != null && todayUsageRecords.size() > 0) {
-//            tx_todayUsedWater.setText("" + (todayUsageRecords.size()));
-//            tx_todayWaterTax.setText("" + getTotalUsageAmount(todayUsageRecords));
-//        }
+        }
 
 
     }

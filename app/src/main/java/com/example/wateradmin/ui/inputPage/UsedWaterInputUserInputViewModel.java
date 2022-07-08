@@ -6,13 +6,15 @@ import androidx.lifecycle.ViewModel;
 
 public class UsedWaterInputUserInputViewModel extends ViewModel {
     WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
+
+    private String usedWaterType;
     private double usedWaterInput;
     private String unitSelectedSpinnerValue;
 
-    public void addUserInputWaterAmountRecord(double usedWaterInput){
+    public void addUserInputWaterAmountRecord(String usedWaterType, double usedWaterInput){
 
         setUsedWaterInput(usedWaterInput);
-        UsedWaterInputUserInputRecord usedWaterInputRecord  = new UsedWaterInputUserInputRecord(setUnitSelectedSpinnerValue(unitSelectedSpinnerValue));
+        UsedWaterInputUserInputRecord usedWaterInputRecord  = new UsedWaterInputUserInputRecord(usedWaterType, setUnitSelectedSpinnerValue(unitSelectedSpinnerValue));
 
         waterUsageRecordRepository.setAddUserInput(usedWaterInputRecord);
     }
@@ -23,6 +25,14 @@ public class UsedWaterInputUserInputViewModel extends ViewModel {
 
     public void setUsedWaterInput(double usedWaterInput) {
         this.usedWaterInput = usedWaterInput;
+    }
+
+    public String getUsedWaterType() {
+        return usedWaterType;
+    }
+
+    public void setUsedWaterType(String usedWaterType) {
+        this.usedWaterType = usedWaterType;
     }
 
     public String getUnitSelectedSpinnerValue() {

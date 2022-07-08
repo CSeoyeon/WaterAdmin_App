@@ -24,7 +24,7 @@ public class UsedWaterInputUserInputFragment extends Fragment {
 
     private FragmentUsedwaterinputuserinputBinding binding;
     private UsedWaterInputUserInputViewModel usedWaterInputUserInputViewModel;
-    private EditText tx_userInput;
+    private EditText tx_userInputType, tx_userInputAmount;
     private Button bt_save;
     private Spinner sp_unit;
 
@@ -48,7 +48,8 @@ public class UsedWaterInputUserInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tx_userInput = binding.usedWaterInputUserInputEtUsedWater;
+        tx_userInputType = binding.usedWaterInputUserInputEtTypeUserInput;
+        tx_userInputAmount = binding.usedWaterInputUserInputEtUsedWater;
         bt_save = binding.usedWaterInputUserInputBtSave;
         sp_unit = binding.usedWaterInputUserInputSpLiterChoice;
 
@@ -84,7 +85,7 @@ public class UsedWaterInputUserInputFragment extends Fragment {
         bt_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                usedWaterInputUserInputViewModel.addUserInputWaterAmountRecord(Double.parseDouble(tx_userInput.getText().toString()));
+                usedWaterInputUserInputViewModel.addUserInputWaterAmountRecord(tx_userInputType.getText().toString(), Double.parseDouble(tx_userInputAmount.getText().toString()));
             }
         });
 

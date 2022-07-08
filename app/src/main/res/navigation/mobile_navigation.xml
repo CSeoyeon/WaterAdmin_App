@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_waterUserFragment"
             app:destination="@id/navigation_waterUserInputFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_recordViewFragment"
+            app:destination="@id/navigation_recordViewFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -45,6 +49,13 @@
         <action
             android:id="@+id/action_navigation_usedWaterInputFragment_to_navigation_waterUserInputFragment"
             app:destination="@id/navigation_waterUserInputFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_recordViewFragment"
+        android:name="com.example.wateradmin.ui.recordPage.RecordListFragment"
+        android:label="recordList"
+        tools:layout="@layout/fragment_recordlist" >
     </fragment>
 
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.wateradmin.ui.inputPage.UsageRecordDate;
+import com.example.wateradmin.ui.inputPage.UsedWaterInputLaundryRecord;
 import com.example.wateradmin.ui.inputPage.WaterUsageRecord;
 import com.example.wateradmin.ui.inputPage.WaterUsageRecordRepository;
 
@@ -24,15 +25,25 @@ public class HomeViewModel extends ViewModel {
         mText.setValue("This is home fragment");
     }
 
-    public List<WaterUsageRecord> getAllUsageRecords()
+    public List<UsedWaterInputLaundryRecord> getAllUsageRecords()
     {
         return waterUsageRecordRepository.getAllUsageRecords();
     }
 
-    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date)
+    public List<UsedWaterInputLaundryRecord> getUsageRecordsForDate(UsageRecordDate date)
     {
         return waterUsageRecordRepository.getUsageRecordsForDate(date);
     }
+
+//    public List<WaterUsageRecord> getAllUsageRecords()
+//    {
+//        return waterUsageRecordRepository.getAllUsageRecords();
+//    }
+//
+//    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date)
+//    {
+//        return waterUsageRecordRepository.getUsageRecordsForDate(date);
+//    }
 
     public double getUsedLaundryWaterAmount(){
         return waterUsageRecordRepository.setCalculateWaterAmount();

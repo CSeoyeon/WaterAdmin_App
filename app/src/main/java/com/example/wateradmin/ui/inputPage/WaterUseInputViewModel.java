@@ -11,6 +11,7 @@ public class WaterUseInputViewModel extends ViewModel {
 
     private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private String selectedSpinnerValue;
+    private double waterTax;
 
     public void addNewUsageRecord(double amountInLiters) {
         UsageType usageType = UsageType.SHOWER;
@@ -33,7 +34,7 @@ public class WaterUseInputViewModel extends ViewModel {
         }
 
         WaterUsageRecord toAdd = new WaterUsageRecord(usageType, amountInLiters, System.currentTimeMillis());
-        waterUsageRecordRepository.addUsageRecord(toAdd);
+        //waterUsageRecordRepository.addUsageRecord(toAdd);
     }
 
     public String getSelectedSpinnerValue() {

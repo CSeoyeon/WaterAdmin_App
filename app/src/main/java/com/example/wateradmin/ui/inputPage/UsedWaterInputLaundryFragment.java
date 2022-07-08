@@ -30,6 +30,7 @@ public class UsedWaterInputLaundryFragment extends Fragment {
     private EditText et_usedCount;
     private Button bt_save;
 
+
     protected static double laundryWaterAmount = 0.0;
 
     @Nullable
@@ -54,18 +55,23 @@ public class UsedWaterInputLaundryFragment extends Fragment {
         radioG_laundryMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checked) {
+                String selectedItem = ""; 
                 switch(checked){
                     case R.id.usedWaterLaundry_radioBt_basicModeCold:
+                        selectedItem = "표준 모드(냉수)";
                         laundryWaterAmount = 89.0;
                         break;
 
                     case R.id.usedWaterLaundry_radioBt_basicModeHot:
+                        selectedItem = "표준 모드(40도 이상)";
                         laundryWaterAmount = 80.5;
                         break;
                     case R.id.usedWaterLaundry_radioBt_bedding:
+                        selectedItem = "이불 세탁";
                         laundryWaterAmount = 157.0;
                         break;
                 }
+                usedWaterInputLaundryViewModel.setSelectedRadioValue(selectedItem);
             }
         });
 

@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel;
 public class UsedWaterInputShowerViewModel extends ViewModel {
     WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
     private double usedWaterCount, showerWaterMinute;
+    private String showerType = "목욕";
 
     public void addShowerWaterAmountRecord(int usedShowerMinute){
-        UsedWaterInputShowerRecord showerRecord = new UsedWaterInputShowerRecord(setShowerWaterMinute(usedShowerMinute));
+        UsedWaterInputShowerRecord showerRecord = new UsedWaterInputShowerRecord(showerType, setShowerWaterMinute(usedShowerMinute));
         waterUsageRecordRepository.setAddShower(showerRecord);
 
     }

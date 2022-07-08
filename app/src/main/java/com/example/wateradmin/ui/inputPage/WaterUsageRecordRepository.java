@@ -10,17 +10,24 @@ import java.util.Map;
 public class WaterUsageRecordRepository {
     private static final WaterUsageRecordRepository INSTANCE = new WaterUsageRecordRepository();
 
-    private List<WaterUsageRecord> allUsageRecords;
-    private Map<UsageRecordDate, List<WaterUsageRecord>> dateUsageRecordsMap;
+    private List<UsedWaterInputLaundryRecord> allUsageRecords;
+    private Map<UsageRecordDate, List<UsedWaterInputLaundryRecord>> dateUsageRecordsMap;
 
+    //private List<WaterUsageRecord> allUsageRecords;
+    //private Map<UsageRecordDate, List<WaterUsageRecord>> dateUsageRecordsMap;
+
+
+    //record
     private UsedWaterInputLaundryRecord addLaundry;
     private UsedWaterInputShowerRecord addShower;
     private UsedWaterInputWashdishRecord addWashdish;
     private UsedWaterInputWashCarRecord addWashCar;
     private UsedWaterInputUserInputRecord addUserInput;
 
+    //물 사용량
     private static double laundryAmount, showerAmount, washdishAmount, washCarAmount, userInputAmount;
 
+    //총 사용량, 수도세
     private static double  allUsedAmount, waterTax;
     
     private WaterUsageRecordRepository() {
@@ -32,28 +39,49 @@ public class WaterUsageRecordRepository {
         return INSTANCE;
     }
 
-    public void addUsageRecord(WaterUsageRecord toAdd) {
+    public void addUsageRecord(UsedWaterInputLaundryRecord toAdd) {
         allUsageRecords.add(toAdd);
         if (dateUsageRecordsMap.containsKey(toAdd.getDate())) {
-            List<WaterUsageRecord> recordsForDate = dateUsageRecordsMap.get(toAdd.getDate());
+            List<UsedWaterInputLaundryRecord> recordsForDate = dateUsageRecordsMap.get(toAdd.getDate());
             recordsForDate.add(toAdd);
         } else {
-            List<WaterUsageRecord> recordListToAdd = new ArrayList<>();
+            List<UsedWaterInputLaundryRecord> recordListToAdd = new ArrayList<>();
             recordListToAdd.add(toAdd);
             dateUsageRecordsMap.put(toAdd.getDate(), recordListToAdd);
         }
     }
 
-    public List<WaterUsageRecord> getAllUsageRecords() {
+//        public void addUsageRecord(WaterUsageRecord toAdd) {
+//        allUsageRecords.add(toAdd);
+//        if (dateUsageRecordsMap.containsKey(toAdd.getDate())) {
+//            List<WaterUsageRecord> recordsForDate = dateUsageRecordsMap.get(toAdd.getDate());
+//            recordsForDate.add(toAdd);
+//        } else {
+//            List<WaterUsageRecord> recordListToAdd = new ArrayList<>();
+//            recordListToAdd.add(toAdd);
+//            dateUsageRecordsMap.put(toAdd.getDate(), recordListToAdd);
+//        }
+//    }
+
+
+    public List<UsedWaterInputLaundryRecord> getAllUsageRecords() {
         return allUsageRecords;
     }
 
-    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date) {
+    public List<UsedWaterInputLaundryRecord> getUsageRecordsForDate(UsageRecordDate date) {
         return dateUsageRecordsMap.get(date);
     }
 
-    //record
+//    public List<WaterUsageRecord> getAllUsageRecords() {
+//        return allUsageRecords;
+//    }
+//
+//    public List<WaterUsageRecord> getUsageRecordsForDate(UsageRecordDate date) {
+//        return dateUsageRecordsMap.get(date);
+//    }
 
+
+    //계산(사용량, 수도세)
     public UsedWaterInputLaundryRecord getAddLaundry() {
         return addLaundry;
     }

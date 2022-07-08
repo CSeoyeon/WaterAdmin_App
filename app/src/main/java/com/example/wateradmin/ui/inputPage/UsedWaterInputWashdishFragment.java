@@ -44,15 +44,19 @@ public class UsedWaterInputWashdishFragment extends Fragment {
         radioG_WashDish.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checked) {
+                String selectedItem ="";
                 switch (checked){
                     case R.id.usedWaterWashDish_radioBt_handWashDish:
+                        selectedItem = "손 설거지";
                         washDishAmount = 22.5;
                         break;
 
                     case R.id.usedWaterWashDish_radioBt_WashMachine:
+                        selectedItem = "식기세척기";
                         washDishAmount = 18.75;
                         break;
                 }
+                usedWaterInputWashdishViewModel.setSelectedRadioValue(selectedItem);
             }
         });
 
