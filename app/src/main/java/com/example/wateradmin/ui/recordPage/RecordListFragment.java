@@ -18,7 +18,7 @@ public class RecordListFragment extends Fragment {
 
     private FragmentRecordlistBinding binding;
     private RecordListViewModel recordListViewModel;
-    private TextView tv_data, tv_useType, tv_waterAmount, tv_waterTax;
+    private TextView tv_date, tv_useType, tv_waterAmount, tv_waterTax;
 
 
     @Nullable
@@ -35,11 +35,15 @@ public class RecordListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tv_data = binding.recordListTvDateView;
+        tv_date = binding.recordListTvDateView;
         tv_useType = binding.recordListTvUseType;
         tv_waterAmount = binding.recordListTvUseWater;
         tv_waterTax = binding.recordListTvWaterTax;
 
+        tv_date.setText(recordListViewModel.getLaundryDate().toString());
+        tv_useType.setText(recordListViewModel.getLaundryTag());
+        tv_waterAmount.setText(String.valueOf(recordListViewModel.getLaundryAmount()));
+        tv_waterTax.setText(String.valueOf(recordListViewModel.getLaundryWaterTax()));
 
 
 

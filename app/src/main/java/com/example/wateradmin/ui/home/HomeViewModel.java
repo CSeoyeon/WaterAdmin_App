@@ -34,9 +34,7 @@ public class HomeViewModel extends ViewModel {
         return waterUsageRecordRepository.setCalculateWaterTax();
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+    public LiveData<String> getText() {return mText;}
 
     public String getUsedWater() {
         return usedWaterAmount;

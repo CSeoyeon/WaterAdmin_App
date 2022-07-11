@@ -30,7 +30,7 @@ public class WaterUsageRecordRepository {
     private static String laundryTag, showerTag, washdishTag, washCarTag, userInputTag;
 
     //record date
-    private UsageRecordDate laundryDate, showerDate, washdishDate, washCarDatem, userInputDate;
+    private UsageRecordDate laundryDate, showerDate, washdishDate, washCarDate, userInputDate;
 
     //물 사용량
     private static double laundryAmount, showerAmount, washdishAmount, washCarAmount, userInputAmount;
@@ -78,7 +78,6 @@ public class WaterUsageRecordRepository {
         this.addShower = addShower;
         showerAmount = addShower.getUsedShowerWaterAmount();
         showerTag = addShower.getShowerType();
-
 
         Log.v("샤워", " "+showerAmount);
 
@@ -170,40 +169,36 @@ public class WaterUsageRecordRepository {
         WaterUsageRecordRepository.laundryTag = laundryTag;
     }
 
-    public static String getShowerTag() {
-        return showerTag;
-    }
-
-    public static void setShowerTag(String showerTag) {
-        WaterUsageRecordRepository.showerTag = showerTag;
-    }
-
-    public static String getWashdishTag() {
-        return washdishTag;
-    }
-
-    public static void setWashdishTag(String washdishTag) {
-        WaterUsageRecordRepository.washdishTag = washdishTag;
-    }
-
-    public static String getWashCarTag() {
-        return washCarTag;
-    }
-
-    public static void setWashCarTag(String washCarTag) {
-        WaterUsageRecordRepository.washCarTag = washCarTag;
-    }
-
-    public static String getUserInputTag() {
-        return userInputTag;
-    }
-
-    public static void setUserInputTag(String userInputTag) {
-        WaterUsageRecordRepository.userInputTag = userInputTag;
-    }
 
     public void addLaundryRecord(String laundryTag, double laundryAmount, double laundryWaterTax, UsageRecordDate date){
 
+    }
 
+    //date
+    public UsageRecordDate getLaundryDate() {
+        return laundryDate;
+    }
+
+    public void setLaundryDate(UsageRecordDate laundryDate) {
+        this.laundryDate = laundryDate;
+    }
+
+    //amount
+    public static double getLaundryAmount() {
+        return laundryAmount;
+    }
+
+    public static void setLaundryAmount(double laundryAmount) {
+        WaterUsageRecordRepository.laundryAmount = laundryAmount;
+    }
+
+    //watertax
+
+    public double getLaundryWaterTax() {
+        return laundryWaterTax;
+    }
+
+    public void setLaundryWaterTax(double laundryWaterTax) {
+        this.laundryWaterTax = laundryWaterTax;
     }
 }
