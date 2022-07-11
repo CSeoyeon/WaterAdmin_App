@@ -1,11 +1,10 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
@@ -15,20 +14,25 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputwashdishBinding;
+import com.example.wateradmin.ui.inputPage.model.UsageType;
+import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
+import com.example.wateradmin.ui.inputPage.viewmodel.WaterUseInputViewModel;
 
 public class UsedWaterInputWashdishFragment extends Fragment {
 
     private FragmentUsedwaterinputwashdishBinding binding;
-    private UsedWaterInputWashdishViewModel usedWaterInputWashdishViewModel;
+    private WaterUseInputViewModel waterUseInputViewModel;
+
 
     private RadioGroup radioG_WashDish;
     private static double washDishAmount = 0.0;
     private Button bt_save;
+    private UsageType selectedType;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        usedWaterInputWashdishViewModel = new ViewModelProvider(this).get(UsedWaterInputWashdishViewModel.class);
+        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
         binding = FragmentUsedwaterinputwashdishBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
@@ -44,19 +48,18 @@ public class UsedWaterInputWashdishFragment extends Fragment {
         radioG_WashDish.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checked) {
-                String selectedItem ="";
+
                 switch (checked){
                     case R.id.usedWaterWashDish_radioBt_handWashDish:
-                        selectedItem = "손 설거지";
+                        selectedType = UsageType.DISH_HAND_MODE;
                         washDishAmount = 22.5;
                         break;
 
                     case R.id.usedWaterWashDish_radioBt_WashMachine:
-                        selectedItem = "식기세척기";
+                        selectedType = UsageType.DISH_WASH_MACHINE;
                         washDishAmount = 18.75;
                         break;
                 }
-                usedWaterInputWashdishViewModel.setSelectedRadioValue(selectedItem);
             }
         });
 
@@ -64,8 +67,7 @@ public class UsedWaterInputWashdishFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                usedWaterInputWashdishViewModel.addWashDishAmountRecord(washDishAmount);
-
+                waterUseInputViewModel.addNewUsageRecord(new WaterUsageRecord(selectedType, washDishAmount, System.currentTimeMillis()));
             }
         });
 

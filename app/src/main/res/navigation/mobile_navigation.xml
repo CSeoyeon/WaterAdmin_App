@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/navigation_waterUserInputFragment"
-        android:name="com.example.wateradmin.ui.inputPage.WaterUseInputFragment"
+        android:name="com.example.wateradmin.ui.inputPage.fragment.WaterUseInputFragment"
         android:label="WaterUsedInput"
         tools:layout="@layout/fragment_usedwaterinput" >
         <action
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/navigation_usedWaterInputFragment"
-        android:name="com.example.wateradmin.ui.inputPage.UsedWaterInputLaundryFragment"
+        android:name="com.example.wateradmin.ui.inputPage.fragment.UsedWaterInputLaundryFragment"
         android:label="laundryInput"
         tools:layout="@layout/fragment_usedwaterinputlaundry" >
         <action

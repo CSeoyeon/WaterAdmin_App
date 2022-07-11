@@ -1,7 +1,6 @@
 package com.example.wateradmin.ui.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentHomeBinding;
-import com.example.wateradmin.ui.inputPage.UsageRecordDate;
-import com.example.wateradmin.ui.inputPage.UsedWaterInputLaundryRecord;
-import com.example.wateradmin.ui.inputPage.WaterUsageRecord;
-import com.example.wateradmin.ui.inputPage.WaterUseInputViewModel;
+import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
+import com.example.wateradmin.ui.inputPage.viewmodel.WaterUseInputViewModel;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private Button bt_Add;
-    private TextView tx_todayUsedWater, tx_todayWaterTax;
+    private TextView tv_todayUsedWater, tv_todayWaterTax;
     private HomeViewModel homeViewModel;
     private WaterUseInputViewModel waterUseInputViewModel;
 
@@ -43,8 +40,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         //매핑
-        tx_todayUsedWater = binding.homeTxShowtodayWaterUsedAmount;
-        tx_todayWaterTax = binding.homeTxShowtodayUsedWaterTax;
+        tv_todayUsedWater = binding.homeTxShowtodayWaterUsedAmount;
+        tv_todayWaterTax = binding.homeTxShowtodayUsedWaterTax;
         bt_Add = binding.homeBtAdd;
 
         bt_recordView = binding.homeBtRecordView;
@@ -72,8 +69,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tx_todayUsedWater.setText(String.valueOf(homeViewModel.getUsedLaundryWaterAmount()));
-        tx_todayWaterTax.setText(String.valueOf(homeViewModel.getUsedLaundryWaterTax()));
+        tv_todayUsedWater.setText(String.valueOf(homeViewModel.getTotalWaterUsedForToday()));
+        tv_todayWaterTax.setText(String.valueOf(homeViewModel.getTotalCostForToday()));
 
 
 

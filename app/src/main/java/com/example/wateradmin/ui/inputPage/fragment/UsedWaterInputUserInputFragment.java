@@ -1,7 +1,6 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,17 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputuserinputBinding;
+import com.example.wateradmin.ui.inputPage.model.UsageType;
+import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
+import com.example.wateradmin.ui.inputPage.viewmodel.WaterUseInputViewModel;
 
 public class UsedWaterInputUserInputFragment extends Fragment {
 
     private FragmentUsedwaterinputuserinputBinding binding;
-    private UsedWaterInputUserInputViewModel usedWaterInputUserInputViewModel;
+    private WaterUseInputViewModel waterUseInputViewModel;
     private EditText tx_userInputType, tx_userInputAmount;
     private Button bt_save;
     private Spinner sp_unit;
@@ -38,7 +38,7 @@ public class UsedWaterInputUserInputFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        usedWaterInputUserInputViewModel = new ViewModelProvider(this).get(UsedWaterInputUserInputViewModel.class);
+        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
         binding = FragmentUsedwaterinputuserinputBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
@@ -60,7 +60,6 @@ public class UsedWaterInputUserInputFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long ld) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-               usedWaterInputUserInputViewModel.setUnitSelectedSpinnerValue(selectedItem);
 
                 if(sp_unit.getSelectedItem().toString() == "L(리터)"){
 
@@ -85,7 +84,7 @@ public class UsedWaterInputUserInputFragment extends Fragment {
         bt_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                usedWaterInputUserInputViewModel.addUserInputWaterAmountRecord(tx_userInputType.getText().toString(), Double.parseDouble(tx_userInputAmount.getText().toString()));
+                waterUseInputViewModel.addNewUsageRecord(new WaterUsageRecord(UsageType.USER_INPUT, Double.parseDouble(tx_userInputAmount.getText().toString()), System.currentTimeMillis()));
             }
         });
 

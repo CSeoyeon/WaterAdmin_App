@@ -1,4 +1,7 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.model;
+
+import com.example.wateradmin.ui.inputPage.model.UsageRecordDate;
+import com.example.wateradmin.ui.inputPage.model.UsageType;
 
 public class WaterUsageRecord {
     private UsageType type;

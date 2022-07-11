@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id ="@+id/fragment_usedwaterInputLaundry"
-    tools:context="ui.inputPage.UsedWaterInputLaundryFragment">
+    tools:context=".ui.inputPage.fragment.UsedWaterInputLaundryFragment">
 
     <TextView
         android:id="@+id/usedWaterLaundry_tv_title"

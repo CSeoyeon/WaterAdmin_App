@@ -17,11 +17,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.022" />
 
+    <ListView
+        android:id="@+id/recordList_lv_waterRecord"
+        android:layout_width="344dp"
+        android:layout_height="619dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recordList_tv_waterRecord"
+        app:layout_constraintVertical_bias="0.188" />
+
+
+    <!--
     <TextView
         android:id="@+id/recordList_tv_useType"
         android:layout_width="208dp"
@@ -47,7 +60,7 @@
         android:layout_width="208dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:text="2022:00:00"
         app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
         app:layout_constraintTop_toBottomOf="@+id/recordList_tv_waterRecord" />
@@ -61,5 +74,6 @@
         android:text="입력된 물 양"
         app:layout_constraintStart_toStartOf="@+id/recordList_tv_waterRecord"
         app:layout_constraintTop_toBottomOf="@+id/recordList_tv_useType" />
+        -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

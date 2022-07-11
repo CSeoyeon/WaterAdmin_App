@@ -1,4 +1,4 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.model;
 
 import androidx.annotation.Nullable;
 

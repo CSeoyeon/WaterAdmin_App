@@ -1,44 +1,41 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wateradmin.R;
 import com.example.wateradmin.databinding.FragmentUsedwaterinputlaundryBinding;
-
-import org.w3c.dom.Text;
+import com.example.wateradmin.ui.inputPage.model.UsageType;
+import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
+import com.example.wateradmin.ui.inputPage.viewmodel.WaterUseInputViewModel;
 
 public class UsedWaterInputLaundryFragment extends Fragment {
 
     private FragmentUsedwaterinputlaundryBinding binding;
-    private UsedWaterInputLaundryViewModel usedWaterInputLaundryViewModel;
+    private WaterUseInputViewModel waterUseInputViewModel;
 
     private RadioGroup radioG_laundryMode;
     private EditText et_usedCount;
     private Button bt_save;
 
-
+    private UsageType selectedUsageType;
     protected static double laundryWaterAmount = 0.0;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        usedWaterInputLaundryViewModel = new ViewModelProvider(this).get(UsedWaterInputLaundryViewModel.class);
-
+        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
         binding = FragmentUsedwaterinputlaundryBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -55,23 +52,21 @@ public class UsedWaterInputLaundryFragment extends Fragment {
         radioG_laundryMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checked) {
-                String selectedItem = ""; 
                 switch(checked){
                     case R.id.usedWaterLaundry_radioBt_basicModeCold:
-                        selectedItem = "표준 모드(냉수)";
+                        selectedUsageType = UsageType.LAUNDRY_BASIC_MODE_COLD;
                         laundryWaterAmount = 89.0;
                         break;
 
                     case R.id.usedWaterLaundry_radioBt_basicModeHot:
-                        selectedItem = "표준 모드(40도 이상)";
+                        selectedUsageType = UsageType.LAUNDRY_BASIC_MODE_HOT;
                         laundryWaterAmount = 80.5;
                         break;
                     case R.id.usedWaterLaundry_radioBt_bedding:
-                        selectedItem = "이불 세탁";
+                        selectedUsageType = UsageType.LAUNDRY_BEDDING_MODE;
                         laundryWaterAmount = 157.0;
                         break;
                 }
-                usedWaterInputLaundryViewModel.setSelectedRadioValue(selectedItem);
             }
         });
 
@@ -79,7 +74,7 @@ public class UsedWaterInputLaundryFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                usedWaterInputLaundryViewModel.addLaundryWaterAmountRecord(laundryWaterAmount, Double.parseDouble(et_usedCount.getText().toString()));
+                waterUseInputViewModel.addNewUsageRecord(new WaterUsageRecord(selectedUsageType, laundryWaterAmount, System.currentTimeMillis()));
 
             }
         });

@@ -1,4 +1,4 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,11 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wateradmin.databinding.FragmentUsedwaterinputshowerBinding;
+import com.example.wateradmin.ui.inputPage.model.UsageType;
+import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
+import com.example.wateradmin.ui.inputPage.viewmodel.WaterUseInputViewModel;
 
 public class UsedWaterInputShowerFragment extends Fragment {
 
     FragmentUsedwaterinputshowerBinding binding;
-    UsedWaterInputShowerViewModel usedWaterInputShowerViewModel = new UsedWaterInputShowerViewModel();
+    WaterUseInputViewModel waterUseInputViewModel;
 
     private EditText et_usedMinute;
     private Button bt_save;
@@ -25,7 +28,7 @@ public class UsedWaterInputShowerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        usedWaterInputShowerViewModel = new ViewModelProvider(this).get(UsedWaterInputShowerViewModel.class);
+        waterUseInputViewModel = new ViewModelProvider(this).get(WaterUseInputViewModel.class);
 
         binding = FragmentUsedwaterinputshowerBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -43,7 +46,8 @@ public class UsedWaterInputShowerFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                usedWaterInputShowerViewModel.addShowerWaterAmountRecord(Integer.parseInt(et_usedMinute.getText().toString()));
+                int showerMinutes = Integer.parseInt(et_usedMinute.getText().toString());
+                waterUseInputViewModel.addNewUsageRecord(new WaterUsageRecord(UsageType.SHOWER, showerMinutes * 12, System.currentTimeMillis()));
 
             }
         });

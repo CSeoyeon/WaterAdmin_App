@@ -1,4 +1,4 @@
-package com.example.wateradmin.ui.inputPage;
+package com.example.wateradmin.ui.inputPage.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
