@@ -17,21 +17,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <ListView
         android:id="@+id/recordList_lv_waterRecord"
-        android:layout_width="344dp"
-        android:layout_height="619dp"
+        android:layout_width="340dp"
+        android:layout_height="605dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recordList_tv_waterRecord"
-        app:layout_constraintVertical_bias="0.188" />
+        app:layout_constraintVertical_bias="0.022" />
 
 
     <!--

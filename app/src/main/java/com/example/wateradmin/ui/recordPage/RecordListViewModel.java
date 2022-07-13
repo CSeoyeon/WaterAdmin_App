@@ -9,69 +9,87 @@ import com.example.wateradmin.ui.inputPage.WaterUsageRecordRepository;
 import com.example.wateradmin.ui.inputPage.model.UsageType;
 import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecordListViewModel extends ViewModel {
 
-    //private String laundryTag;
-    private UsageType laundryTag;
-    private UsageRecordDate laundryDate;
-    private double laundryWaterTax;
-    private double laundryAmount;
-    private WaterUsageRecord testRecord;
-
-    private  WaterUsageRecord testRecord2;
-    private UsageType testTag;
 
     private WaterUsageRecordRepository waterUsageRecordRepository = WaterUsageRecordRepository.getInstance();
+    private List<WaterUsageRecord> waterUsageRecordList = waterUsageRecordRepository.getAllUsageRecords();
+
+    private WaterUsageRecord waterUsageRecord;
+
+    private UsageType recordTag;
+    private UsageRecordDate recordDate;
+    private double recordWaterTax;
+    private double recordAmount;
+
+    private List recordList = new ArrayList(){};
+    private List recordTagList = new ArrayList(){};
+    private List recordDateList = new ArrayList(){};
+
+//    public WaterUsageRecord getRecord(){
+//
+//        //반복 횟수만큼 배로 가져옴...
+//        for(int i =0; i<waterUsageRecordList.size(); i++){
+//            waterUsageRecord = waterUsageRecordList.get(i);
+//        }
+//
+//        return waterUsageRecord;
+//    }
+
+    public List getRecordList(){
+
+        for(WaterUsageRecord val: waterUsageRecordList){
+            recordList.add(val);
+        }
+        return recordList;
+    }
+
+     public List getRecordTag() {
+
+         for(WaterUsageRecord val: waterUsageRecordList){
+            recordTagList.add(val.getType());
+         }
+
+        Log.v("22", "" + recordTagList);
+        return recordTagList;
+     }
 
 
-//    public WaterUsageRecord getLaundry(){
-//
-//
-//        testRecord = waterUsageRecordRepository.getLaundryRecordsForToday().get(0);
-//        //for each문 돌려서 다 뽑아내기
-//
-//        laundryTag = testRecord.getType();
-//        Log.v("11", ""+ laundryTag);
-//
-//
-//
-//         return waterUsageRecordRepository.getLaundryRecordsForToday().get(0);
-//    }
+    public void setRecordTag(UsageType recordTag) {
+        this.recordTag = recordTag;
+    }
 
 
+    public List getRecordDate() {
+        for(WaterUsageRecord val: waterUsageRecordList){
+            recordDateList.add(val.getDate());
+        }
+        return recordDateList;
+    }
 
-    //laundry 사용 기록 확인
-    // public String getLaundryTag() {
-//        return waterUsageRecordRepository.getLaundryTag();
+//    public void setRecordDate(UsageRecordDate recordDate) {
+//        this.recordDate = recordDate;
 //    }
 //
-//    public void setLaundryTag(String laundryTag) {
-//        this.laundryTag = laundryTag;
+//    public double getRecordWaterTax() {
+//        return waterUsageRecordRepository.getrecordWaterTax();
 //    }
 //
-//    public String getLaundryDate() {
-//        return waterUsageRecordRepository.getLaundryDate();
+//    public void setRecordWaterTax(double recordWaterTax) {
+//        this.recordWaterTax = recordWaterTax;
 //    }
 //
-//    public void setLaundryDate(UsageRecordDate laundryDate) {
-//        this.laundryDate = laundryDate;
+//    public double getRecordAmount() {
+//        return waterUsageRecordRepository.getrecordAmount();
 //    }
 //
-//    public double getLaundryWaterTax() {
-//        return waterUsageRecordRepository.getLaundryWaterTax();
+//    public void setRecordAmount(double recordAmount) {
+//        this.recordAmount = recordAmount;
 //    }
-//
-//    public void setLaundryWaterTax(double laundryWaterTax) {
-//        this.laundryWaterTax = laundryWaterTax;
-//    }
-//
-//    public double getLaundryAmount() {
-//        return waterUsageRecordRepository.getLaundryAmount();
-//    }
-//
-//    public void setLaundryAmount(double laundryAmount) {
-//        this.laundryAmount = laundryAmount;
-//    }
+
+    
+    
 }

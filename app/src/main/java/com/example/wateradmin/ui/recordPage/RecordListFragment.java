@@ -12,20 +12,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wateradmin.databinding.FragmentRecordlistBinding;
-import com.example.wateradmin.ui.inputPage.WaterUsageRecordRepository;
 
-public class RecordListFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecordListFragment extends ListFragment {
 
     private FragmentRecordlistBinding binding;
+
     private RecordListViewModel recordListViewModel;
     private TextView tv_date, tv_useType, tv_waterAmount, tv_waterTax;
+
     private ListView lv_waterData;
-
-
-    // https://itstudy-mary.tistory.com/207
+    private List waterUsedRecords = new ArrayList(){};
+    private RecordListAdapter recordListAdapter = new RecordListAdapter();
 
     @Nullable
     @Override
@@ -41,19 +45,18 @@ public class RecordListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+       lv_waterData = binding.recordListLvWaterRecord;
 
-//        tv_date = binding.recordListTvDateView;
-//        tv_useType = bin
-//        ding.recordListTvUseType;
-//        tv_waterAmount = binding.recordListTvUseWater;
-//        tv_waterTax = binding.recordListTvWaterTax;
+       for(Object record: recordListViewModel.getRecordTag()){
+           waterUsedRecords.add(record);
+       }
+
+       setListAdapter(recordListAdapter);
+       //recordListAdapter.addItem(날짜, 수도 사용량, 수도세);
 
 
-        //tv_date.setText(recordListViewModel.getLaundry().toString());
-//        tv_date.setText(recordListViewModel.getLaundryDate());
-//        tv_useType.setText(recordListViewModel.getLaundryTag());
-//        tv_waterAmount.setText(String.valueOf(recordListViewModel.getLaundryAmount()));
-//        tv_waterTax.setText(String.valueOf(recordListViewModel.getLaundryWaterTax()));
+        //ArrayAdapter<String> recordAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, waterUsedRecords);
+        //lv_waterData.setAdapter(recordAdapter);
 
 
 
