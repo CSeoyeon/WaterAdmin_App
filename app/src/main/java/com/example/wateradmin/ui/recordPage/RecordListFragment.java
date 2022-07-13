@@ -44,20 +44,21 @@ public class RecordListFragment extends ListFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setListAdapter(recordListAdapter);
 
-       lv_waterData = binding.recordListLvWaterRecord;
+        //recordListAdapter.addItem(날짜, 수도 사용량, 수도세);
+        //recordListAdapter.addItem();
 
+       lv_waterData = binding.list;
        for(Object record: recordListViewModel.getRecordTag()){
+
+           //recordListAdapter.addItem();
            waterUsedRecords.add(record);
+
        }
 
-       setListAdapter(recordListAdapter);
-       //recordListAdapter.addItem(날짜, 수도 사용량, 수도세);
-
-
-        //ArrayAdapter<String> recordAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, waterUsedRecords);
-        //lv_waterData.setAdapter(recordAdapter);
-
+        ArrayAdapter<String> recordAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, waterUsedRecords);
+        lv_waterData.setAdapter(recordAdapter);
 
 
     }

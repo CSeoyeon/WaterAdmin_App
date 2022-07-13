@@ -63,6 +63,9 @@ public class RecordListAdapter extends BaseAdapter {
 
     public void addItem(UsageRecordDate date, double usedWater, double usedWaterTax){
         RecordListItem item = new RecordListItem(date, usedWater, usedWaterTax);
+        item.setTv_date(date);
+        item.setTv_usedWater(usedWater);
+        item.setTv_usedWaterTax(usedWaterTax);
     }
 
 }
