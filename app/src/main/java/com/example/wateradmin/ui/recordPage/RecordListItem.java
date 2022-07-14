@@ -40,4 +40,5 @@ public class RecordListItem {
     public void setTv_usedWaterTax(double tv_usedWaterTax) {
         this.tv_usedWaterTax = tv_usedWaterTax;
     }
+
 }

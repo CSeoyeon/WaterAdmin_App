@@ -24,6 +24,8 @@ public class WaterTaxCalculator
     }
 
 
+    //단위 계산은 위 메소드를 오버로딩해서..
+
     //물양
     public static double getLaundryAmount() {
         return laundryAmount;
