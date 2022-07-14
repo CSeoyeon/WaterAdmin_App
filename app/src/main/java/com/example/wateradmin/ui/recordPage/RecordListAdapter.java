@@ -37,6 +37,8 @@ public class RecordListAdapter extends BaseAdapter {
         final int position =i;
         final Context context = viewGroup.getContext();
 
+        RecordListItem recordListItem = (RecordListItem) getItem(i);
+
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.fragment_recordlistitem, viewGroup, false);
@@ -46,7 +48,12 @@ public class RecordListAdapter extends BaseAdapter {
          tv_usedWater = binding.recordListItemTvUsedWater;
          tv_usedWaterTax = binding.recordListItemTvUsedWaterTax;
 
-         RecordListItem recordListItem = listViewItemList.get(position);
+
+         //RecordListItem recordListItem = listViewItemList.get(position);
+        tv_date.setText(recordListItem.getTv_date().toString());
+        tv_usedWater.setText(String.valueOf(recordListItem.getTv_usedWater()));
+        tv_usedWaterTax.setText(String.valueOf(recordListItem.getTv_usedWaterTax()));
+
 
         return view;
     }

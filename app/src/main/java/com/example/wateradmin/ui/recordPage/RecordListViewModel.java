@@ -12,6 +12,7 @@ import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class RecordListViewModel extends ViewModel {
 
@@ -29,61 +30,58 @@ public class RecordListViewModel extends ViewModel {
     private List recordList = new ArrayList(){};
     private List recordTagList = new ArrayList(){};
     private List recordDateList = new ArrayList(){};
-    private List recordUsedWaterList = new ArrayList(){};
-    private List recordWaterTaxList = new ArrayList(){};
 
 
 
     public List getRecordList(){
-
         for(WaterUsageRecord val: waterUsageRecordList){
-            recordList.add(val);
+            recordTagList.add(val.getType());
+            recordTagList.add(val.getDate());
+            recordTagList.add(val.getUsedAmountInLiters());
         }
-        return recordList;
-    }
-
-     public List getRecordTag() {
-
-        for(WaterUsageRecord val: waterUsageRecordList){
-             recordTagList.add(val.getType());
-             recordTagList.add(val.getDate());
-             recordTagList.add(val.getUsedAmountInLiters());
-         }
         Log.v("22", "" + recordTagList);
         return recordTagList;
-     }
+    }
+
+     public UsageType getRecordTag() {
+        for(WaterUsageRecord val: waterUsageRecordList){
+                 recordTag = (val.getType());
+             }
+         return recordTag;
+         }
+
 
 
     public void setRecordTag(UsageType recordTag) {
         this.recordTag = recordTag;
     }
 
-
-    public List getRecordDate() {
-
-        return recordDateList;
-    }
-
-    public void setRecordDate(UsageRecordDate recordDate) {
-        this.recordDate = recordDate;
-    }
-
+//
+//    public List getRecordDate() {
+//
+//        return recordDateList;
+//    }
+//
+//    public void setRecordDate(UsageRecordDate recordDate) {
+//        this.recordDate = recordDate;
+//    }
+//
 //    public double getRecordAmount() {
 //        return ();
 //    }
-
-    public void setRecordAmount(double recordAmount) {
-        this.recordAmount = recordAmount;
-    }
-
-    public List getRecordWaterTax() {
-
-        return recordDateList;
-    }
-
-    public void setRecordWaterTax(double recordWaterTax) {
-        this.recordWaterTax = recordWaterTax;
-    }
+//
+//    public void setRecordAmount(double recordAmount) {
+//        this.recordAmount = recordAmount;
+//    }
+//
+//    public List getRecordWaterTax() {
+//
+//        return recordDateList;
+//    }
+//
+//    public void setRecordWaterTax(double recordWaterTax) {
+//        this.recordWaterTax = recordWaterTax;
+//    }
 
 
 
