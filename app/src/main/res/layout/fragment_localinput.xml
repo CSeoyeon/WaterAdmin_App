@@ -23,25 +23,23 @@
         android:text="시/군"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siDo"
-        tools:layout_editor_absoluteX="69dp" />
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siDo" />
 
     <Spinner
         android:id="@+id/inputLocal_sp_dong"
         android:layout_width="141dp"
         android:layout_height="50dp"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/inputLocal_tv_dong"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_sp_sigun"
         app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_sigun" />
 
     <Spinner
         android:id="@+id/inputLocal_sp_sigun"
         android:layout_width="141dp"
         android:layout_height="50dp"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/inputLocal_tv_siGun"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_sp_sido"
         app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_sido" />
 
     <TextView
@@ -52,8 +50,8 @@
         android:text="동/읍/면"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siGun"
-        tools:layout_editor_absoluteX="58dp" />
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siGun" />
 
     <TextView
         android:id="@+id/inputLocal_tv_siDo"
@@ -62,7 +60,7 @@
         android:text="시/도"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="58dp"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
         tools:layout_editor_absoluteY="110dp" />
 
     <Button
@@ -84,9 +82,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.051" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
