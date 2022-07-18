@@ -33,7 +33,7 @@ public class RecordRecyclerViewAdapter extends RecyclerView.Adapter<RecordRecycl
     {
         WaterUsageRecord currRecord = records.get(position);
 
-        holder.tv_date.setText(currRecord.getDate().toString());
+        holder.tv_date.setText(currRecord.getFormatDate());
         holder.tv_usedWater.setText(String.valueOf(currRecord.getUsedAmountInLiters()));
         holder.tv_usedWaterTax.setText("아직 없음");
     }

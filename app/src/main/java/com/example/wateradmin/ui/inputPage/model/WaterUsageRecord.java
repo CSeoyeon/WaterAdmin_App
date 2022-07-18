@@ -38,6 +38,8 @@ public class WaterUsageRecord {
         this.date = date;
     }
 
-
+    public String getFormatDate(){
+        return (date.getYear() + "년 " + date.getMonth() + "월 " + date.getDay()+"일");
+    }
 
 }

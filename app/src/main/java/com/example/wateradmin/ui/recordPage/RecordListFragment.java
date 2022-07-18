@@ -41,6 +41,7 @@ public class RecordListFragment extends Fragment {
         binding = FragmentRecordlistBinding.inflate(inflater, container, false);
 
         rv_records = binding.recordListRvRecords;
+
         if(recordRecycleViewAdapter == null){
             recordRecycleViewAdapter = new RecordRecyclerViewAdapter(recordListViewModel.getRecordList());
         }

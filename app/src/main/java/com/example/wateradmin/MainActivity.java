@@ -32,9 +32,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("수도 관리");
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
 
+
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menuicon);
         actionBar.setDisplayShowTitleEnabled(false);

@@ -49,4 +49,6 @@ public class UsageRecordDate {
     public int getDay() {
         return day;
     }
+
+
 }
