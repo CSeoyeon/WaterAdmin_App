@@ -20,7 +20,7 @@ public class WaterUsageRecordRepository
         allUsageRecords = new ArrayList<>();
         dateUsageRecordsMap = new HashMap<>();
     }
-//
+///
     public static WaterUsageRecordRepository getInstance()
     {
         return INSTANCE;
