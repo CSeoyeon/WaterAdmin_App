@@ -7,72 +7,6 @@
     tools:context=".ui.inputPage.fragment.LocalInputFragment"
     >
 
-    <Spinner
-        android:id="@+id/inputLocal_sp_sido"
-        android:layout_width="141dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintStart_toEndOf="@+id/inputLocal_tv_siDo"
-        tools:layout_editor_absoluteY="90dp" />
-
-    <TextView
-        android:id="@+id/inputLocal_tv_siGun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="시/군"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siDo" />
-
-    <Spinner
-        android:id="@+id/inputLocal_sp_dong"
-        android:layout_width="141dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/inputLocal_sp_sigun"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_sigun" />
-
-    <Spinner
-        android:id="@+id/inputLocal_sp_sigun"
-        android:layout_width="141dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@+id/inputLocal_sp_sido"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_sido" />
-
-    <TextView
-        android:id="@+id/inputLocal_tv_dong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="동/읍/면"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siGun" />
-
-    <TextView
-        android:id="@+id/inputLocal_tv_siDo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="시/도"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
-        tools:layout_editor_absoluteY="110dp" />
-
-    <Button
-        android:id="@+id/inputLocal_bt_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="64dp"
-        android:text="확인"
-        app:layout_constraintStart_toEndOf="@+id/inputLocal_sp_dong"
-        app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_dong" />
-
     <TextView
         android:id="@+id/inputLocal_tv_title"
         android:layout_width="106dp"
@@ -85,6 +19,75 @@
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.111" />
+
+    <Spinner
+        android:id="@+id/inputLocal_sp_sido"
+        android:layout_width="141dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="48dp"
+        app:layout_constraintStart_toEndOf="@+id/inputLocal_tv_siDo"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_title" />
+
+    <Button
+        android:id="@+id/inputLocal_bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="60dp"
+        android:text="확인"
+        app:layout_constraintStart_toEndOf="@+id/inputLocal_sp_dong"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_dong" />
+
+    <Spinner
+        android:id="@+id/inputLocal_sp_sigun"
+        android:layout_width="141dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_sp_sido"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_sido" />
+
+    <Spinner
+        android:id="@+id/inputLocal_sp_dong"
+        android:layout_width="141dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_sp_sigun"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_sp_sigun" />
+
+    <TextView
+        android:id="@+id/inputLocal_tv_siDo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="시/도"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_title" />
+
+    <TextView
+        android:id="@+id/inputLocal_tv_dong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="56dp"
+        android:text="동/읍/면"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siGun" />
+
+    <TextView
+        android:id="@+id/inputLocal_tv_siGun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="72dp"
+        android:text="시/군"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/inputLocal_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/inputLocal_tv_siDo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

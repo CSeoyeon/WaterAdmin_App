@@ -1,5 +1,6 @@
 package com.example.wateradmin.ui.inputPage.model;
 
+import com.example.wateradmin.ui.inputPage.WaterTaxCalculator;
 import com.example.wateradmin.ui.inputPage.model.UsageRecordDate;
 import com.example.wateradmin.ui.inputPage.model.UsageType;
 
@@ -40,6 +41,9 @@ public class WaterUsageRecord {
 
     public String getFormatDate(){
         return (date.getYear() + "년 " + date.getMonth() + "월 " + date.getDay()+"일");
+    }
+    public double getWaterTax(){
+        return WaterTaxCalculator.calculateWaterTax(getUsedAmountInLiters());
     }
 
 }

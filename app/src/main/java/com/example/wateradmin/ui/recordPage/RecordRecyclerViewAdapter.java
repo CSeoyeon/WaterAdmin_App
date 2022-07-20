@@ -10,12 +10,16 @@ import android.widget.TextView;
 import com.example.wateradmin.databinding.FragmentRecordlistitemBinding;
 import com.example.wateradmin.ui.inputPage.model.WaterUsageRecord;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class RecordRecyclerViewAdapter extends RecyclerView.Adapter<RecordRecyclerViewAdapter.ViewHolder> {
 
+
     private List<WaterUsageRecord> records;
+
+    private ArrayList<RecordListItem> recordItem;
 
     public RecordRecyclerViewAdapter(List<WaterUsageRecord> items)
     {
@@ -35,8 +39,12 @@ public class RecordRecyclerViewAdapter extends RecyclerView.Adapter<RecordRecycl
 
         holder.tv_date.setText(currRecord.getFormatDate());
         holder.tv_usedWater.setText(String.valueOf(currRecord.getUsedAmountInLiters()));
-        holder.tv_usedWaterTax.setText("아직 없음");
+        holder.tv_usedWaterTax.setText(String.valueOf(currRecord.getWaterTax()));
+
+        //holder.onBind(recordItem.get(position));
+
     }
+
 
     @Override
     public int getItemCount()
@@ -52,9 +60,17 @@ public class RecordRecyclerViewAdapter extends RecyclerView.Adapter<RecordRecycl
         public ViewHolder(FragmentRecordlistitemBinding binding)
         {
             super(binding.getRoot());
+
             tv_date = binding.recordListItemTvDate;
             tv_usedWater = binding.recordListItemTvUsedWater;
             tv_usedWaterTax = binding.recordListItemTvUsedWaterTax;
+        }
+
+        protected void onBind(RecordListItem items){
+            tv_date.setText(items.getTv_date().toString());
+            tv_usedWater.setText(String.valueOf(items.getTv_usedWater()));
+            tv_usedWaterTax.setText(String.valueOf(items.getTv_usedWaterTax()));
+
         }
 
         @Override

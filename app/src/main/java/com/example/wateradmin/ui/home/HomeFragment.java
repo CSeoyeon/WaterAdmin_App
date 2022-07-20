@@ -24,7 +24,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private Button bt_Add;
+    private Button bt_Add, bt_local;
     private TextView tv_todayUsedWater, tv_todayWaterTax;
     private HomeViewModel homeViewModel;
     private WaterUseInputViewModel waterUseInputViewModel;
@@ -45,6 +45,8 @@ public class HomeFragment extends Fragment {
         bt_Add = binding.homeBtAdd;
 
         bt_recordView = binding.homeBtRecordView;
+        bt_local = binding.homeBtInputRegion;
+
 
         NavController homeNavController = NavHostFragment.findNavController(HomeFragment.this);
         bt_Add.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +60,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 homeNavController.navigate(R.id.action_navigation_home_to_navigation_recordViewFragment);
+            }
+        });
+
+        bt_local.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeNavController.navigate(R.id.action_navigation_home_to_navigation_localInputFragment);
             }
         });
 

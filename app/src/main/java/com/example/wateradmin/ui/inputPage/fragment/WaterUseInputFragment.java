@@ -28,7 +28,7 @@ public class WaterUseInputFragment extends Fragment {
     private FragmentUsedwaterinputBinding binding;
     private WaterUseInputViewModel waterUseInputViewModel;
 
-    static final String[] useWaterInputSpUseType =new String[]{
+    protected static final String[] useWaterInputSpUseType =new String[]{
             "세탁",
             "세차",
             "설거지",
