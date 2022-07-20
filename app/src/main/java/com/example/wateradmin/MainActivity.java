@@ -54,12 +54,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+
         RegionRepository.getInstance().getRegions(new RegionRepository.RepositoryCallback<List<String>>() {
             @Override
             public void onComplete(List<String> result) {
                 Log.d("DEBUG", "onComplete: " + result.size());
             }
         });
+
+
     }
 
 

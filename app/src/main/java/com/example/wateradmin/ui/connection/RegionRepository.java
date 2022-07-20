@@ -27,21 +27,26 @@ public class RegionRepository {
         return INSTANCE;
     }
 
+    //object로 받아온 다음에 필요한 부분만 형식(List, hashmap 등. . ) 맞춰서 사용
     public void getRegions(RepositoryCallback<List<String>> callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 Call<List<Results>> call = RetrofitClient.getInstance().getMyApi().getRegions();
                 call.enqueue(new Callback<List<Results>>() {
-
                     @Override
                     public void onResponse(Call<List<Results>> call, Response<List<Results>> response) {
                         List<Results> regionRecordList = response.body();
-                        List<String> toReturn = new ArrayList<>();
+                        List<String> toReturnRegion = new ArrayList<>();
+                        List<String> toReturnWaterTax = new ArrayList<>();
+
                         for (int i = 0; i < regionRecordList.size(); i++) {
-                            toReturn.add(regionRecordList.get(i).getRegionName());
+                            toReturnRegion.add(regionRecordList.get(i).getRegionName());
+                            toReturnWaterTax.add(regionRecordList.get(i).getPricePerLiter());
                         }
-                        callback.onComplete(toReturn);
+
+
+                        callback.onComplete(toReturnRegion);
                     }
 
                     @Override
