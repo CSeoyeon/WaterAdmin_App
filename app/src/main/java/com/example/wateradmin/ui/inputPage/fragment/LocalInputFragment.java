@@ -64,6 +64,7 @@ public class LocalInputFragment extends Fragment {
                     List<String> siDoList = localInputViewModel.getSiDoList();
                     String[] stringArray = new String[siDoList.size()];
                     siDoList.toArray(stringArray);
+
                     ArrayAdapter<String> inputRegionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, stringArray);
                     inputRegionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sp_siDo.setAdapter(inputRegionAdapter);

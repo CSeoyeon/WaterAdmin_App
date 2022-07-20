@@ -6,12 +6,17 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.wateradmin.ui.connection.RegionRepository;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class LocalInputViewModel extends ViewModel {
+
     private RegionRepository regionRepository = RegionRepository.getInstance();
     private MutableLiveData<Boolean> siDoLoaded = new MutableLiveData<>(false);
+
     private List<String> siDoList;
+
+    private HashMap<List<String>, List<String>> regionWaterTax;
 
     public void loadSiDoList()
     {
