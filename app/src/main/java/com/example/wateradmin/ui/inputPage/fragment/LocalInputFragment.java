@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,8 +36,9 @@ public class LocalInputFragment extends Fragment {
     private FragmentLocalinputBinding binding;
     private LocalInputViewModel localInputViewModel;
 
-    private Spinner sp_siDo, sp_siGun, sp_dong;
+    private Spinner sp_siDo;
     private Button bt_save;
+    private TextView tv_regionWaterTax;
 
     @Nullable
     @Override
@@ -52,9 +54,8 @@ public class LocalInputFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sp_siDo = binding.inputLocalSpSido;
-        sp_siGun = binding.inputLocalSpSigun;
-        sp_dong = binding.inputLocalSpDong;
         bt_save = binding.inputLocalBtSave;
+        tv_regionWaterTax = binding.localInputTvReigonwaterTax;
 
         localInputViewModel.isSiDoLoaded().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override

@@ -1,26 +1,20 @@
 package com.example.wateradmin;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-
-import com.example.wateradmin.ui.connection.RegionRepository;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.wateradmin.databinding.ActivityMainBinding;
+import com.example.wateradmin.ui.connection.RegionRepository;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -57,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
         RegionRepository.getInstance().getRegions(new RegionRepository.RepositoryCallback<List<String>>() {
             @Override
-            public void onComplete(List<String> result) {
-                Log.d("DEBUG", "onComplete: " + result.size());
+            public void onComplete(List<String> regionResult, List<String> regionWaterTaxResult) {
+                Log.d("DEBUG", "onComplete: " + regionResult.size());
+
+
             }
         });
 
